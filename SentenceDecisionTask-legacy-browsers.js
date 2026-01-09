@@ -1137,6 +1137,9 @@ function Particpant_ResponseRoutineEnd(snapshot) {
     // Run 'End Routine' code from storeValidMouseClick
     corr_text = ((resp === correct_answer.toString()) ? "yes" : ((resp !== null) ? "no" : null));
     corr = ((resp === correct_answer.toString()) ? "1" : ((resp !== null) ? "0" : null));
+    console.log("resp", resp);
+    console.log("correct_answer", correct_answer);
+    console.log((resp === correct_answer.toString()));
     trialLoop.addData("valid_rt", response_time);
     trialLoop.addData("valid_resp", resp);
     trialLoop.addData("valid_mouse_key_resp", mouse_response);
@@ -1454,7 +1457,7 @@ function End_Task_RoutineRoutineBegin(snapshot) {
     
     //extract result from experiment
     let dataObj = psychoJS._experiment._trialsData;
-    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_rt',' valid_resp', 'valid_is_correct?','valid_accuracy','valid_mouse_key_resp','Trial.started','Trial.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
+    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_rt',' valid_resp', 'valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
     
     // Build datatable
     let data = [

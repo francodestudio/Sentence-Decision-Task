@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 09, 2026, at 14:42
+    on January 09, 2026, at 15:02
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1290,7 +1290,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Score correctness
             corr_text = 'yes' if resp == str(correct_answer) else 'no' if resp is not None else None
             corr = '1' if resp == str(correct_answer) else '0' if resp is not None else None
-            
+            print("resp", resp)
+            print("correct_answer", correct_answer)
+            print(resp == str(correct_answer))
             # Record data to CSV
             trialLoop.addData('valid_rt', response_time)
             trialLoop.addData('valid_resp', resp)
