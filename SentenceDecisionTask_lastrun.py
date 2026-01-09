@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 09, 2026, at 15:47
+    on January 09, 2026, at 16:37
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -655,7 +655,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         method='random', 
         extraInfo=expInfo, 
         originPath=-1, 
-        trialList=data.importConditions('experiment_stimuli/chooseBlocksTest.xlsx'), 
+        trialList=data.importConditions('experiment_stimuli/chooseBlocks.xlsx'), 
         seed=None, 
     )
     thisExp.addLoop(blockLoop)  # add the loop to the experiment
@@ -813,6 +813,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             nextWordTime = 0    
             currentWord = words[wordIndex]
             
+            
                  
             
             # setup some python lists for storing info about the earlyMouseClick
@@ -823,6 +824,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             early_response_time=[]
             early_response= ''
             mouse_response =''
+            
             
             
             # store start times for RSVP
@@ -1035,14 +1037,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             thisExp.addData('RSVP.stopped', RSVP.tStop)
             # store data for trialLoop (TrialHandler)
             # Run 'End Routine' code from storeEarlyMouseClick
-            # Score correctness
+            correctStr = "True" if correct_answer else "False"
             corr_text = 'yes' if str(early_response) == correctStr else 'no' if early_response is not None else None
             corr = '1' if str(early_response) == correctStr else '0' if early_response is not None else None
             
-            print("early_response", early_response)
-            print("correct_answer2", correct_answer)
-            print(resp == correctStr)
-            print('here2')
             # Record data to CSV
             trialLoop.addData('early_rt', early_response_time)
             trialLoop.addData('early_resp', early_response)
@@ -1075,6 +1073,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             response_time =[]
             resp = ''
             responsefixationCross.setColor('black')
+            
             
             # store start times for Particpant_Response
             Particpant_Response.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
@@ -1291,12 +1290,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Run 'End Routine' code from storeValidMouseClick
             
             # Score correctness
+            correctStr = "True" if correct_answer else "False"
             corr_text = 'yes' if resp == correctStr else 'no' if resp is not None else None
             corr = '1' if resp == correctStr else '0' if resp is not None else None
-            print("resp", resp)
-            print("correct_answer", correctStr)
-            print(resp == correctStr)
-            print("here")
+            
             # Record data to CSV
             trialLoop.addData('valid_rt', response_time)
             trialLoop.addData('valid_resp', resp)
@@ -1352,8 +1349,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         continueRoutine = True
         # update component parameters for each repeat
         # Run 'Begin Routine' code from fixationScript
-        #if blockLoop.thisN == 4 or blockLoop.thisN == 9:
-        if blockLoop.thisN == 1 or blockLoop.thisN == 3:
+        if blockLoop.thisN == 4 or blockLoop.thisN == 9:
+        #if blockLoop.thisN == 1 or blockLoop.thisN == 3:
             continueRoutine = False
         else:
             continueRoutine = True
@@ -1485,8 +1482,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         breakKeyPress.rt = []
         _breakKeyPress_allKeys = []
         # Run 'Begin Routine' code from breakScript
-        #if (blockLoop.thisN == 4):
-        if (blockLoop.thisN == 1):
+        if (blockLoop.thisN == 4):
+        #if (blockLoop.thisN == 1):
             continueRoutine = True
         else:
             continueRoutine = False

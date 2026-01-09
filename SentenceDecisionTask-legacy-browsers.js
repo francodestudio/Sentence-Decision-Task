@@ -57,22 +57,17 @@ flowScheduler.add(blockLoopLoopEnd);
 flowScheduler.add(End_Task_RoutineRoutineBegin());
 flowScheduler.add(End_Task_RoutineRoutineEachFrame());
 flowScheduler.add(End_Task_RoutineRoutineEnd());
-flowScheduler.add(quitPsychoJS, 'Have a Wonderful day!', true);
+flowScheduler.add(quitPsychoJS, 'Thank You for Your Participation!', true);
 
 // quit if user presses Cancel in dialog box:
-dialogCancelScheduler.add(quitPsychoJS, 'Have a Wonderful day!', false);
+dialogCancelScheduler.add(quitPsychoJS, 'Thank You for Your Participation!', false);
 
 psychoJS.start({
   expName: expName,
   expInfo: expInfo,
   resources: [
     // resources:
-    {'name': 'experiment_stimuli/chooseBlocksTest.xlsx', 'path': 'experiment_stimuli/chooseBlocksTest.xlsx'},
-    {'name': 'experiment_stimuli/chooseBlocksTest.xlsx', 'path': 'experiment_stimuli/chooseBlocksTest.xlsx'},
-    {'name': 'experiment_stimuli/test6.xlsx', 'path': 'experiment_stimuli/test6.xlsx'},
-    {'name': 'experiment_stimuli/test7.xlsx', 'path': 'experiment_stimuli/test7.xlsx'},
-    {'name': 'experiment_stimuli/test8.xlsx', 'path': 'experiment_stimuli/test8.xlsx'},
-    {'name': 'experiment_stimuli/test9.xlsx', 'path': 'experiment_stimuli/test9.xlsx'},
+    {'name': 'experiment_stimuli/chooseBlocks.xlsx', 'path': 'experiment_stimuli/chooseBlocks.xlsx'},
     {'name': 'experiment_stimuli/Block1.xlsx', 'path': 'experiment_stimuli/Block1.xlsx'},
     {'name': 'experiment_stimuli/Block2.xlsx', 'path': 'experiment_stimuli/Block2.xlsx'},
     {'name': 'experiment_stimuli/Block3.xlsx', 'path': 'experiment_stimuli/Block3.xlsx'},
@@ -492,7 +487,7 @@ function blockLoopLoopBegin(blockLoopLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'experiment_stimuli/chooseBlocksTest.xlsx',
+      trialList: 'experiment_stimuli/chooseBlocks.xlsx',
       seed: undefined, name: 'blockLoop'
     });
     psychoJS.experiment.addLoop(blockLoop); // add the loop to the experiment
@@ -721,7 +716,6 @@ var clicked;
 var early_response_time;
 var early_response;
 var mouse_response;
-var correctStr;
 var RSVPMaxDuration;
 var RSVPComponents;
 function RSVPRoutineBegin(snapshot) {
@@ -751,7 +745,6 @@ function RSVPRoutineBegin(snapshot) {
     early_response_time = [];
     early_response = "";
     mouse_response = "";
-    correctStr = (correct_answer ? "True" : "False");
     
     psychoJS.experiment.addData('RSVP.started', globalClock.getTime());
     RSVPMaxDuration = null
@@ -912,6 +905,7 @@ function RSVPRoutineEachFrame() {
 }
 
 
+var correctStr;
 var corr_text;
 var corr;
 function RSVPRoutineEnd(snapshot) {
@@ -925,12 +919,9 @@ function RSVPRoutineEnd(snapshot) {
     psychoJS.experiment.addData('RSVP.stopped', globalClock.getTime());
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeEarlyMouseClick
+    correctStr = (correct_answer ? "True" : "False");
     corr_text = ((early_response.toString() === correctStr) ? "yes" : ((early_response !== null) ? "no" : null));
     corr = ((early_response.toString() === correctStr) ? "1" : ((early_response !== null) ? "0" : null));
-    console.log("early_response", early_response);
-    console.log("correct_answer2", correctStr);
-    console.log((resp === correctStr));
-    console.log("here2");
     trialLoop.addData("early_rt", early_response_time);
     trialLoop.addData("early_resp", early_response);
     trialLoop.addData("early_mouse_key_resp", mouse_response);
@@ -979,7 +970,6 @@ function Particpant_ResponseRoutineBegin(snapshot) {
     response_time = [];
     resp = "";
     responsefixationCross.setColor("black");
-    correctStr = (correct_answer ? "True" : "False");
     
     psychoJS.experiment.addData('Particpant_Response.started', globalClock.getTime());
     Particpant_ResponseMaxDuration = null
@@ -1141,12 +1131,9 @@ function Particpant_ResponseRoutineEnd(snapshot) {
     psychoJS.experiment.addData('Particpant_Response.stopped', globalClock.getTime());
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeValidMouseClick
+    correctStr = (correct_answer ? "True" : "False");
     corr_text = ((resp === correctStr) ? "yes" : ((resp !== null) ? "no" : null));
     corr = ((resp === correctStr) ? "1" : ((resp !== null) ? "0" : null));
-    console.log("resp", resp);
-    console.log("correct_answer", correctStr);
-    console.log((resp === correctStr));
-    console.log("here");
     trialLoop.addData("valid_rt", response_time);
     trialLoop.addData("valid_resp", resp);
     trialLoop.addData("valid_mouse_key_resp", mouse_response);
@@ -1186,7 +1173,7 @@ function Fixation_CrossRoutineBegin(snapshot) {
     Fixation_CrossMaxDurationReached = false;
     // update component parameters for each repeat
     // Run 'Begin Routine' code from fixationScript
-    if (((blockLoop.thisN === 1) || (blockLoop.thisN === 3))) {
+    if (((blockLoop.thisN === 4) || (blockLoop.thisN === 9))) {
         continueRoutine = false;
     } else {
         continueRoutine = true;
@@ -1313,7 +1300,7 @@ function Midpoint_BreakRoutineBegin(snapshot) {
     breakKeyPress.rt = undefined;
     _breakKeyPress_allKeys = [];
     // Run 'Begin Routine' code from breakScript
-    if ((blockLoop.thisN === 1)) {
+    if ((blockLoop.thisN === 4)) {
         continueRoutine = true;
     } else {
         continueRoutine = false;
