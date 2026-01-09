@@ -1,0 +1,55 @@
+﻿Block,Stimuli_Type,Stimuli,One_subsubj_two_subObj,correct_answer,Block_raw,One_subsubj_two_subObj_raw,Stimuli_Type_raw,Stimuli_raw,accuracy_raw,correct_answer_raw,early_resp_raw,early_rt_raw,is_correct?_raw,mouse_key_resp_raw,thisN_raw,thisRepN_raw,thisTrialN_raw,valid_res_raw,valid_rt_raw
+9,Metaphors,His arrival was a shrill siren.,no_change,False,9,no_change,Metaphors,His arrival was a shrill siren.,1,False,,,yes,right,0,0,0,False,1.482974300000933
+9,Metaphors,The banker's opinion was a seesaw.,no_change,False,9,no_change,Metaphors,The banker's opinion was a seesaw.,1,False,True,2.1326939999999013,yes,right,1,0,1,False,0.6274916999973357
+9,Metaphors,The summer romance was a merry-go-round.,no_change,False,9,no_change,Metaphors,The summer romance was a merry-go-round.,1,False,True,1.2493821000025491,yes,right,2,0,2,False,0.00042859999666688964
+
+extraInfo
+participant_id,825751
+tf_mapping,TrueFalse
+date,2026-01-09_12h21.30.206
+expName,SentenceDecisionTask
+expVersion,v2
+psychopyVersion,2025.1.1
+frameRate,59.90115111999444
+expStart,2026-01-09 12h21.33.954102 -0700
+﻿Block,Stimuli_Type,Stimuli,One_subsubj_two_subObj,correct_answer,Block_raw,One_subsubj_two_subObj_raw,Stimuli_Type_raw,Stimuli_raw,accuracy_raw,correct_answer_raw,early_resp_raw,early_rt_raw,is_correct?_raw,mouse_key_resp_raw,thisN_raw,thisRepN_raw,thisTrialN_raw,valid_res_raw,valid_rt_raw
+8,Metaphors,His arrival was a shrill siren.,no_change,False,8,no_change,Metaphors,His arrival was a shrill siren.,0,False,,,no,left,0,0,0,True,0.4996277999962331
+8,Metaphors,The banker's opinion was a seesaw.,no_change,False,8,no_change,Metaphors,The banker's opinion was a seesaw.,0,False,False,1.2477118999959202,no,right,1,0,1,,
+8,Metaphors,The summer romance was a merry-go-round.,no_change,False,8,no_change,Metaphors,The summer romance was a merry-go-round.,0,False,False,2.658096099999966,no,right,2,0,2,,
+
+extraInfo
+participant_id,825751
+tf_mapping,TrueFalse
+date,2026-01-09_12h21.30.206
+expName,SentenceDecisionTask
+expVersion,v2
+psychopyVersion,2025.1.1
+frameRate,59.90115111999444
+expStart,2026-01-09 12h21.33.954102 -0700
+﻿Block,Stimuli_Type,Stimuli,One_subsubj_two_subObj,correct_answer,Block_raw,One_subsubj_two_subObj_raw,Stimuli_Type_raw,Stimuli_raw,accuracy_raw,correct_answer_raw,early_resp_raw,early_rt_raw,is_correct?_raw,mouse_key_resp_raw,thisN_raw,thisRepN_raw,thisTrialN_raw,valid_res_raw,valid_rt_raw
+6,LiterallyTrue,The solemn song was an anthem.,no_change,True,6,no_change,LiterallyTrue,The solemn song was an anthem.,1,True,,,yes,left,0,0,0,True,0.2155754000050365
+6,LiterallyTrue,The shout was only an echo.,no_change,True,6,no_change,LiterallyTrue,The shout was only an echo.,0,True,True,0.8014317999986815,no,left,1,0,1,,
+
+extraInfo
+participant_id,825751
+tf_mapping,TrueFalse
+date,2026-01-09_12h21.30.206
+expName,SentenceDecisionTask
+expVersion,v2
+psychopyVersion,2025.1.1
+frameRate,59.90115111999444
+expStart,2026-01-09 12h21.33.954102 -0700
+﻿Block,Stimuli_Type,Stimuli,One_subsubj_two_subObj,correct_answer,Block_raw,One_subsubj_two_subObj_raw,Stimuli_Type_raw,Stimuli_raw,accuracy_raw,correct_answer_raw,early_resp_raw,early_rt_raw,is_correct?_raw,mouse_key_resp_raw,thisN_raw,thisRepN_raw,thisTrialN_raw,valid_res_raw,valid_rt_raw
+7,LiterallyTrue,The dry plant was a tumbleweed.,no_change,True,7,no_change,LiterallyTrue,The sharp rod was a lance.,0,True,False,2.509639000003517,no,right,0,0,0,False,0.9837437000023783
+7,LiterallyTrue,The sharp rod was a lance.,no_change,True,7,no_change,LiterallyTrue,His gait was a mild limp.,0,True,,,no,right,1,0,1,False,0.30099309999786783
+7,LiterallyTrue,His gait was a mild limp.,no_change,True,7,no_change,LiterallyTrue,The dry plant was a tumbleweed.,0,True,False,2.8408312999963528,no,right,2,0,2,False,0.0006430000066757202
+
+extraInfo
+participant_id,825751
+tf_mapping,TrueFalse
+date,2026-01-09_12h21.30.206
+expName,SentenceDecisionTask
+expVersion,v2
+psychopyVersion,2025.1.1
+frameRate,59.90115111999444
+expStart,2026-01-09 12h21.33.954102 -0700
