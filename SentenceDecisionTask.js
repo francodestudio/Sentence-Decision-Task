@@ -170,11 +170,11 @@ async function experimentInit() {
   
   // Run 'Begin Experiment' code from mouseMappingScript
   if ((expInfo["tf_mapping"] === "TrueFalse")) {
-      left = "True";
-      right = "False";
+      left = "true";
+      right = "false";
   } else {
-      left = "False";
-      right = "True";
+      left = "false";
+      right = "true";
   }
   dynamic_text = `Judge whether each sentence is literally true or false
   

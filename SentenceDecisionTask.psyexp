@@ -79,6 +79,22 @@
   </Settings>
   <Routines>
     <Routine name="Start_Task_Routine">
+      <RoutineSettingsComponent name="Start_Task_Routine" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="Start_Task_Routine" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
       <CodeComponent name="setupBrowserScript" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
@@ -99,8 +115,8 @@
       <CodeComponent name="mouseMappingScript" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="if expInfo[&quot;tf_mapping&quot;] == 'TrueFalse':&amp;#10;    left = 'True'&amp;#10;    right = 'False'&amp;#10;   &amp;#10;else:&amp;#10;    left = 'False'&amp;#10;    right ='True'&amp;#10;    &amp;#10;dynamic_text = f&quot;Judge whether each sentence is literally true or false\n\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPress spacebar to begin.&quot;&amp;#10;left_response = f&quot;Left mouse click = {left}&quot;&amp;#10;right_response = f&quot;Right mouse click = {right}&quot;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="if ((expInfo[&quot;tf_mapping&quot;] === &quot;TrueFalse&quot;)) {&amp;#10;    left = &quot;True&quot;;&amp;#10;    right = &quot;False&quot;;&amp;#10;} else {&amp;#10;    left = &quot;False&quot;;&amp;#10;    right = &quot;True&quot;;&amp;#10;}&amp;#10;dynamic_text = `Judge whether each sentence is literally true or false&amp;#10;&amp;#10;Left mouse click = ${left}&amp;#10;Right mouse click = ${right}&amp;#10;&amp;#10;Press spacebar to begin.`&amp;#10;;&amp;#10;left_response = `Left mouse click = ${left}`;&amp;#10;right_response = `Right mouse click = ${right}`;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if expInfo[&quot;tf_mapping&quot;] == 'TrueFalse':&amp;#10;    left = 'true'&amp;#10;    right = 'false'&amp;#10;   &amp;#10;else:&amp;#10;    left = 'false'&amp;#10;    right ='true'&amp;#10;    &amp;#10;dynamic_text = f&quot;Judge whether each sentence is literally true or false\n\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPress spacebar to begin.&quot;&amp;#10;left_response = f&quot;Left mouse click = {left}&quot;&amp;#10;right_response = f&quot;Right mouse click = {right}&quot;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="if ((expInfo[&quot;tf_mapping&quot;] === &quot;TrueFalse&quot;)) {&amp;#10;    left = &quot;true&quot;;&amp;#10;    right = &quot;false&quot;;&amp;#10;} else {&amp;#10;    left = &quot;false&quot;;&amp;#10;    right = &quot;true&quot;;&amp;#10;}&amp;#10;dynamic_text = `Judge whether each sentence is literally true or false&amp;#10;&amp;#10;Left mouse click = ${left}&amp;#10;Right mouse click = ${right}&amp;#10;&amp;#10;Press spacebar to begin.`&amp;#10;;&amp;#10;left_response = `Left mouse click = ${left}`;&amp;#10;right_response = `Right mouse click = ${right}`;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
@@ -113,22 +129,6 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="mouseMappingScript" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <RoutineSettingsComponent name="Start_Task_Routine" plugin="None">
-        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
-        <Param val="" valType="str" updates="None" name="backgroundImg"/>
-        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
-        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
-        <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
-        <Param val="Start_Task_Routine" valType="code" updates="None" name="name"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="constant" name="skipIf"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
-      </RoutineSettingsComponent>
       <TextComponent name="InstructionText" plugin="None">
         <Param val="black" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
