@@ -143,7 +143,7 @@ async function experimentInit() {
   InstructionText = new visual.TextStim({
     win: psychoJS.window,
     name: 'InstructionText',
-    text: 'Welcome!\nYou are about to begin a sentence judgment task.\nYou will see a series of items. Decide whether each one is a literal sentence or not.\n\nInstructions:\nLeft mouse click = Literally False Sentence\nRight mouse click =  Literally True Sentence\n\nPress "spacebar" key  to begin.',
+    text: 'Welcome!\nYou are about to begin a sentence judgment task.\n\nYou will see a series of items. Decide whether each one is a literal sentence or not. Use your mouse to respond.\nLeft mouse click = False \nRight mouse click = True \n\nPress "spacebar" key  to begin.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -180,9 +180,9 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], draggable: false, height: 0.03,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
-    color: new util.Color('yellow'),  opacity: undefined,
+    color: new util.Color([0.0, 0.0, 0.0]),  opacity: undefined,
     depth: -1.0 
   });
   
@@ -545,7 +545,7 @@ function TrialRoutineBegin(snapshot) {
     TrialMaxDurationReached = false;
     // update component parameters for each repeat
     StimuliText.setText(Stimuli);
-    responseInstructions.setText('\n\n\n\n\n\n\nLeft mouse click = Literally False Sentence\nRight mouse click =  Literally True Sentence');
+    responseInstructions.setText('\n\n\n\n\n\n\nLeft mouse click = False \nRight mouse click = True ');
     // setup some python lists for storing info about the mouse
     gotValidClick = false; // until a click is received
     mouse.mouseClock.reset();
@@ -999,7 +999,7 @@ function End_Task_RoutineRoutineBegin(snapshot) {
     //create filename for result
     let now = new Date();
     let timestamp = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'_'+now.getHours()+'h'+  now.getMinutes() + 'm' + now.getSeconds() + 's';
-    let filename = timestamp +'_'+psychoJS._experiment._experimentName+'_sub'+ expInfo["participant_id"]+'csv'
+    let filename = timestamp +'_'+psychoJS._experiment._experimentName+'_sub'+ expInfo["participant_id"]+'.csv'
     
     //extract result from experiment
     let dataObj = psychoJS._experiment._trialsData;
