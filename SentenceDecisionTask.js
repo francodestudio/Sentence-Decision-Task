@@ -999,7 +999,7 @@ function End_Task_RoutineRoutineBegin(snapshot) {
     //create filename for result
     let now = new Date();
     let timestamp = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'_'+now.getHours()+'h'+  now.getMinutes() + 'm' + now.getSeconds() + 's';
-    let filename = psychoJS._experiment._experimentName+'_sub'+ expInfo["participant_id"]+'_'+ timestamp+'.csv'
+    let filename = timestamp +'_'+psychoJS._experiment._experimentName+'_sub'+ expInfo["participant_id"]+'csv'
     
     //extract result from experiment
     let dataObj = psychoJS._experiment._trialsData;
