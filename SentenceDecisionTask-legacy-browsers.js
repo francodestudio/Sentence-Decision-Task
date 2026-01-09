@@ -721,6 +721,7 @@ var clicked;
 var early_response_time;
 var early_response;
 var mouse_response;
+var correctStr;
 var RSVPMaxDuration;
 var RSVPComponents;
 function RSVPRoutineBegin(snapshot) {
@@ -746,11 +747,11 @@ function RSVPRoutineBegin(snapshot) {
     gotValidClick = false; // until a click is received
     earlyMouseClick.mouseClock.reset();
     // Run 'Begin Routine' code from storeEarlyMouseClick
-    let correct_answer = correct_answer ? "True" : "False";
     clicked = false;
     early_response_time = [];
     early_response = "";
     mouse_response = "";
+    correctStr = (correct_answer ? "True" : "False");
     
     psychoJS.experiment.addData('RSVP.started', globalClock.getTime());
     RSVPMaxDuration = null
@@ -924,11 +925,11 @@ function RSVPRoutineEnd(snapshot) {
     psychoJS.experiment.addData('RSVP.stopped', globalClock.getTime());
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeEarlyMouseClick
-    corr_text = ((early_response.toString() === correct_answer.toString()) ? "yes" : ((early_response !== null) ? "no" : null));
-    corr = ((early_response.toString() === correct_answer.toString()) ? "1" : ((early_response !== null) ? "0" : null));
+    corr_text = ((early_response.toString() === correctStr) ? "yes" : ((early_response !== null) ? "no" : null));
+    corr = ((early_response.toString() === correctStr) ? "1" : ((early_response !== null) ? "0" : null));
     console.log("early_response", early_response);
-    console.log("correct_answer2", correct_answer);
-    console.log((resp.toString() === correct_answer.toString()));
+    console.log("correct_answer2", correctStr);
+    console.log((resp === correctStr));
     console.log("here2");
     trialLoop.addData("early_rt", early_response_time);
     trialLoop.addData("early_resp", early_response);
@@ -978,7 +979,7 @@ function Particpant_ResponseRoutineBegin(snapshot) {
     response_time = [];
     resp = "";
     responsefixationCross.setColor("black");
-    let correctStr = correct_answer ? "True" : "False";
+    correctStr = (correct_answer ? "True" : "False");
     
     psychoJS.experiment.addData('Particpant_Response.started', globalClock.getTime());
     Particpant_ResponseMaxDuration = null
@@ -1140,11 +1141,11 @@ function Particpant_ResponseRoutineEnd(snapshot) {
     psychoJS.experiment.addData('Particpant_Response.stopped', globalClock.getTime());
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeValidMouseClick
-    corr_text = ((resp === correct_answer.toString()) ? "yes" : ((resp !== null) ? "no" : null));
-    corr = ((resp === correct_answer.toString()) ? "1" : ((resp !== null) ? "0" : null));
+    corr_text = ((resp === correctStr) ? "yes" : ((resp !== null) ? "no" : null));
+    corr = ((resp === correctStr) ? "1" : ((resp !== null) ? "0" : null));
     console.log("resp", resp);
-    console.log("correct_answer", correct_answer);
-    console.log((resp === correct_answer.toString()));
+    console.log("correct_answer", correctStr);
+    console.log((resp === correctStr));
     console.log("here");
     trialLoop.addData("valid_rt", response_time);
     trialLoop.addData("valid_resp", resp);
@@ -1463,7 +1464,7 @@ function End_Task_RoutineRoutineBegin(snapshot) {
     
     //extract result from experiment
     let dataObj = psychoJS._experiment._trialsData;
-    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_rt','valid_resp','valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
+    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_resp','valid_rt','valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
     
     // Build datatable
     let data = [

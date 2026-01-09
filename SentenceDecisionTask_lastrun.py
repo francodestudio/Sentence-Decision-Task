@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 09, 2026, at 15:02
+    on January 09, 2026, at 15:47
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -721,7 +721,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             # Run 'Begin Routine' code from wordExtractionScript
             words = Stimuli.split(' ')
-            print(words)
+            
             
             
             # store start times for Word_Setup
@@ -1036,10 +1036,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # store data for trialLoop (TrialHandler)
             # Run 'End Routine' code from storeEarlyMouseClick
             # Score correctness
-            corr_text = 'yes' if early_response == str(correct_answer) else 'no' if early_response is not None else None
-            corr = '1' if early_response == str(correct_answer) else '0' if early_response is not None else None
+            corr_text = 'yes' if str(early_response) == correctStr else 'no' if early_response is not None else None
+            corr = '1' if str(early_response) == correctStr else '0' if early_response is not None else None
             
-            
+            print("early_response", early_response)
+            print("correct_answer2", correct_answer)
+            print(resp == correctStr)
+            print('here2')
             # Record data to CSV
             trialLoop.addData('early_rt', early_response_time)
             trialLoop.addData('early_resp', early_response)
@@ -1288,11 +1291,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Run 'End Routine' code from storeValidMouseClick
             
             # Score correctness
-            corr_text = 'yes' if resp == str(correct_answer) else 'no' if resp is not None else None
-            corr = '1' if resp == str(correct_answer) else '0' if resp is not None else None
+            corr_text = 'yes' if resp == correctStr else 'no' if resp is not None else None
+            corr = '1' if resp == correctStr else '0' if resp is not None else None
             print("resp", resp)
-            print("correct_answer", correct_answer)
-            print(resp == str(correct_answer))
+            print("correct_answer", correctStr)
+            print(resp == correctStr)
+            print("here")
             # Record data to CSV
             trialLoop.addData('valid_rt', response_time)
             trialLoop.addData('valid_resp', resp)
