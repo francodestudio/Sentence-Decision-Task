@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 09, 2026, at 14:12
+    on January 09, 2026, at 14:42
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1073,8 +1073,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             resp = ''
             responsefixationCross.setColor('black')
             
-            print("early_corr_text:", corr_text, "early_corr:", corr)
-            print("early res", early_response)
             # store start times for Particpant_Response
             Particpant_Response.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
             Particpant_Response.tStart = globalClock.getTime(format='float')
@@ -1292,13 +1290,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # Score correctness
             corr_text = 'yes' if resp == str(correct_answer) else 'no' if resp is not None else None
             corr = '1' if resp == str(correct_answer) else '0' if resp is not None else None
-            print('correct_answer is' , correct_answer)
-            print('correct_answer is' , resp)
-            print(str(correct_answer) == resp)
             
             # Record data to CSV
             trialLoop.addData('valid_rt', response_time)
-            trialLoop.addData('valid_res', resp)
+            trialLoop.addData('valid_resp', resp)
             trialLoop.addData('valid_mouse_key_resp', mouse_response)
             trialLoop.addData('valid_is_correct?', corr_text)
             trialLoop.addData('valid_accuracy', corr)

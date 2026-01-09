@@ -1,0 +1,28 @@
+﻿Block,Stimuli_Type,Stimuli,One_subsubj_two_subObj,correct_answer,Block_raw,One_subsubj_two_subObj_raw,Stimuli_Type_raw,Stimuli_raw,correct_answer_raw,early_accuracy_raw,early_is_correct?_raw,early_mouse_key_resp_raw,early_resp_raw,early_rt_raw,thisN_raw,thisRepN_raw,thisTrialN_raw,valid_accuracy_raw,valid_is_correct?_raw,valid_mouse_key_resp_raw,valid_resp_raw,valid_rt_raw
+7,LiterallyTrue,The dry plant was a tumbleweed.,no_change,True,7,no_change,LiterallyTrue,The dry plant was a tumbleweed.,True,0,no,,,,0,0,0,0,no,,,
+7,LiterallyTrue,The sharp rod was a lance.,no_change,True,7,no_change,LiterallyTrue,The sharp rod was a lance.,True,0,no,,,,1,0,1,0,no,,,
+7,LiterallyTrue,His gait was a mild limp.,no_change,True,7,no_change,LiterallyTrue,His gait was a mild limp.,True,0,no,,,,2,0,2,0,no,,,
+
+extraInfo
+participant_id,090796
+tf_mapping,FalseTrue
+date,2026-01-09_14h42.06.989
+expName,SentenceDecisionTask
+expVersion,v2
+psychopyVersion,2025.1.1
+frameRate,60.90516031389723
+expStart,2026-01-09 14h42.13.106831 -0700
+﻿Block,Stimuli_Type,Stimuli,One_subsubj_two_subObj,correct_answer,Block_raw,One_subsubj_two_subObj_raw,Stimuli_Type_raw,Stimuli_raw,correct_answer_raw,early_accuracy_raw,early_is_correct?_raw,early_mouse_key_resp_raw,early_resp_raw,early_rt_raw,thisN_raw,thisRepN_raw,thisTrialN_raw,valid_accuracy_raw,valid_is_correct?_raw,valid_mouse_key_resp_raw,valid_resp_raw,valid_rt_raw
+8,Metaphors,His arrival was a shrill siren.,no_change,False,8,no_change,Metaphors,The banker's opinion was a seesaw.,False,0,no,,,,0,0,0,0,no,,,
+8,Metaphors,The banker's opinion was a seesaw.,no_change,False,8,no_change,Metaphors,The summer romance was a merry-go-round.,False,0,no,,,,1,0,1,0,no,,,
+8,Metaphors,The summer romance was a merry-go-round.,no_change,False,8,no_change,Metaphors,His arrival was a shrill siren.,False,0,no,,,,2,0,2,0,no,,,
+
+extraInfo
+participant_id,090796
+tf_mapping,FalseTrue
+date,2026-01-09_14h42.06.989
+expName,SentenceDecisionTask
+expVersion,v2
+psychopyVersion,2025.1.1
+frameRate,60.90516031389723
+expStart,2026-01-09 14h42.13.106831 -0700
