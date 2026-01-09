@@ -641,7 +641,6 @@ function Word_SetupRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from wordExtractionScript
     words = Stimuli.split(" ");
-    console.log(words);
     
     psychoJS.experiment.addData('Word_Setup.started', globalClock.getTime());
     Word_SetupMaxDuration = null
@@ -924,8 +923,12 @@ function RSVPRoutineEnd(snapshot) {
     psychoJS.experiment.addData('RSVP.stopped', globalClock.getTime());
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeEarlyMouseClick
-    corr_text = ((early_response === correct_answer.toString()) ? "yes" : ((early_response !== null) ? "no" : null));
-    corr = ((early_response === correct_answer.toString()) ? "1" : ((early_response !== null) ? "0" : null));
+    corr_text = ((early_response.toString() === correct_answer.toString()) ? "yes" : ((early_response !== null) ? "no" : null));
+    corr = ((early_response.toString() === correct_answer.toString()) ? "1" : ((early_response !== null) ? "0" : null));
+    console.log("early_response", early_response);
+    console.log("correct_answer2", correct_answer);
+    console.log((resp.toString() === correct_answer.toString()));
+    console.log("here2");
     trialLoop.addData("early_rt", early_response_time);
     trialLoop.addData("early_resp", early_response);
     trialLoop.addData("early_mouse_key_resp", mouse_response);
@@ -1140,6 +1143,7 @@ function Particpant_ResponseRoutineEnd(snapshot) {
     console.log("resp", resp);
     console.log("correct_answer", correct_answer);
     console.log((resp === correct_answer.toString()));
+    console.log("here");
     trialLoop.addData("valid_rt", response_time);
     trialLoop.addData("valid_resp", resp);
     trialLoop.addData("valid_mouse_key_resp", mouse_response);
@@ -1457,7 +1461,7 @@ function End_Task_RoutineRoutineBegin(snapshot) {
     
     //extract result from experiment
     let dataObj = psychoJS._experiment._trialsData;
-    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_rt',' valid_resp', 'valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
+    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_rt','valid_resp','valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
     
     // Build datatable
     let data = [
