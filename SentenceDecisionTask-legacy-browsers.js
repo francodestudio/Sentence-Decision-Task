@@ -162,11 +162,11 @@ async function experimentInit() {
   
   // Run 'Begin Experiment' code from mouseMappingScript
   if ((expInfo["tf_mapping"] === "TrueFalse")) {
-      left = "true";
-      right = "false";
+      left = "True";
+      right = "False";
   } else {
-      left = "false";
-      right = "true";
+      left = "False";
+      right = "True";
   }
   dynamic_text = `Judge whether each sentence is literally true or false
   
@@ -746,6 +746,7 @@ function RSVPRoutineBegin(snapshot) {
     gotValidClick = false; // until a click is received
     earlyMouseClick.mouseClock.reset();
     // Run 'Begin Routine' code from storeEarlyMouseClick
+    let correct_answer = correct_answer ? "True" : "False";
     clicked = false;
     early_response_time = [];
     early_response = "";
@@ -977,6 +978,7 @@ function Particpant_ResponseRoutineBegin(snapshot) {
     response_time = [];
     resp = "";
     responsefixationCross.setColor("black");
+    let correctStr = correct_answer ? "True" : "False";
     
     psychoJS.experiment.addData('Particpant_Response.started', globalClock.getTime());
     Particpant_ResponseMaxDuration = null
