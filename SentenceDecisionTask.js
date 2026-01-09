@@ -62,10 +62,10 @@ flowScheduler.add(blockLoopLoopEnd);
 flowScheduler.add(End_Task_RoutineRoutineBegin());
 flowScheduler.add(End_Task_RoutineRoutineEachFrame());
 flowScheduler.add(End_Task_RoutineRoutineEnd());
-flowScheduler.add(quitPsychoJS, 'Thank you for your patience.', true);
+flowScheduler.add(quitPsychoJS, 'Have a Wonderful day!', true);
 
 // quit if user presses Cancel in dialog box:
-dialogCancelScheduler.add(quitPsychoJS, 'Thank you for your patience.', false);
+dialogCancelScheduler.add(quitPsychoJS, 'Have a Wonderful day!', false);
 
 psychoJS.start({
   expName: expName,
@@ -158,6 +158,8 @@ async function experimentInit() {
       e.preventDefault();
   });
   
+  //disable downloading result to browser
+  psychoJS._saveResults = 0;
   // Initialize components for Routine "Trial"
   TrialClock = new util.Clock();
   StimuliText = new visual.TextStim({
