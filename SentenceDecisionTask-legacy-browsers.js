@@ -166,19 +166,14 @@ async function experimentInit() {
       left = "False";
       right = "True";
   }
-  dynamic_text = `You are about to begin a Sentence Judgement Task.
-  Please read the following Instructions carefully:
+  dynamic_text = `Sentence Judgement Task.
   
-  Each sentence will be presented to you one word at a time. After the final word is displayed, a cross (+) will appear briefly.
-  When you see the cross, decide whether the sentence could be literally true (e.g., “The funny sound was his snore”) or it's literally false (e.g., “The desert storm was a carrot”).
-  Respond by using the mouse to select “True” or “False.” The cross will turn purple once your response has been registered.
-  This task is divided into 10 short sections (blocks), each containing a set of sentences.
+  You will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.
+  Each sentence will be presented to you one word at a time, followed by a fixation cross.
+  For each sentence, you must indicate ${left}(left mouse click) if the sentence could be a literally true fact. For example, "The funny sound was his snore" is a statement that could be literally true; or ${right}(right mouse click) if the sentence could not be a literally true fact. For example, "The desert storm was a carrot" could never be true.
+  Use the mouse to indicate "True" or "False" for each sentence as quickly and accurately as you can. The cross will turn purple once your response has been registered.
   
-  Use the mouse button to respond as follows:
-  Left mouse click = ${left}
-  Right mouse click = ${right}
-  
-  Please press the "spacebar" key to begin.`
+  Press the "spacebar" to begin.`
   ;
   left_response = left;
   right_response = right;
