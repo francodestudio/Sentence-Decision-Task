@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 15:44
+    on January 13, 2026, at 16:28
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -744,6 +744,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             
             # setup some python lists for storing info about the validResponseMouseClick
             gotValidClick = False  # until a click is received
+            validResponseMouseClick.mouseClock.reset()
             # Run 'Begin Routine' code from storeValidResponseMouseClick
             validClick = False
             valid_response_time =[]
@@ -933,7 +934,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     win.timeOnFlip(validResponseMouseClick, 'tStartRefresh')  # time at next scr refresh
                     # update status
                     validResponseMouseClick.status = STARTED
-                    validResponseMouseClick.mouseClock.reset()
                     prevButtonState = validResponseMouseClick.getPressed()  # if button is down already this ISN'T a new click
                 
                 # if validResponseMouseClick is stopping this frame...
@@ -981,11 +981,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         responsefixationCrossDisplay.status = FINISHED
                         responsefixationCrossDisplay.setAutoDraw(False)
                 # Run 'Each Frame' code from storeValidResponseMouseClick
+                if t >= 3.0 and validResponseMouseClick.status == NOT_STARTED:
+                    validResponseMouseClick.mouseClock.reset()
+                
                 if t>=3.0 and not validClick:
                     validButtons= validResponseMouseClick.getPressed()
                     if (validButtons[0] or validButtons[2]):
                         validClick = True
-                        valid_response_time = validResponseMouseClick.mouseClock.getTime()
+                        valid_response_time = validResponseMouseClick.mouseClock.getTime() - 3.0
                         print(valid_response_time)
                         if validButtons[0]: 
                             valid_resp = left
