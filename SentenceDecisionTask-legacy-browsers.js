@@ -12,6 +12,10 @@ let expInfo = {
 let PILOTING = util.getUrlParameters().has('__pilotToken');
 
 // Start code blocks for 'Before Experiment'
+// Run 'Before Experiment' code from fixationScript
+currentBlockNumber = 0;
+startBlockInstruction = "";
+
 // init psychoJS:
 const psychoJS = new PsychoJS({
   debug: true
@@ -167,7 +171,7 @@ async function experimentInit() {
       right = "True";
   }
   dynamic_text = `Judge whether each sentence is literally true or false.
-  The task is divided into 10 short sections, each containing a set of sentences.
+  This task is divided into 10 short sections(blocks), each containing a set of sentences.
   
   Left mouse click = ${left}
   Right mouse click = ${right}
@@ -317,7 +321,7 @@ async function experimentInit() {
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
+    color: new util.Color('black'),  opacity: undefined,
     depth: 0.0 
   });
   
@@ -1275,6 +1279,8 @@ function Fixation_CrossRoutineEachFrame() {
 }
 
 
+var currentBlockNumber;
+var startBlockInstruction;
 function Fixation_CrossRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'Fixation_Cross' ---
@@ -1284,6 +1290,10 @@ function Fixation_CrossRoutineEnd(snapshot) {
       }
     });
     psychoJS.experiment.addData('Fixation_Cross.stopped', globalClock.getTime());
+    // Run 'End Routine' code from fixationScript
+    currentBlockNumber = (blockLoop.thisN + 2);
+    startBlockInstruction = `You are about to start block ${currentBlockNumber} out of 10`;
+    
     if (routineForceEnded) {
         routineTimer.reset();} else if (Fixation_CrossMaxDurationReached) {
         Fixation_CrossClock.add(Fixation_CrossMaxDuration);
@@ -1442,8 +1452,6 @@ function Midpoint_BreakRoutineEnd(snapshot) {
 
 
 var Start_Block_InstructionMaxDurationReached;
-var currentBlockNumber;
-var startBlockInstruction;
 var Start_Block_InstructionMaxDuration;
 var Start_Block_InstructionComponents;
 function Start_Block_InstructionRoutineBegin(snapshot) {
@@ -1460,14 +1468,13 @@ function Start_Block_InstructionRoutineBegin(snapshot) {
     routineTimer.add(3.000000);
     Start_Block_InstructionMaxDurationReached = false;
     // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_2
+    blockInstruction.setText(startBlockInstruction);
+    // Run 'Begin Routine' code from blockInstructionScript
     if ((blockLoop.thisN === 9)) {
         continueRoutine = false;
     } else {
         continueRoutine = true;
     }
-    currentBlockNumber = (blockLoop.thisN + 2);
-    startBlockInstruction = `You are about to start block ${currentBlockNumber} out of 10`;
     
     psychoJS.experiment.addData('Start_Block_Instruction.started', globalClock.getTime());
     Start_Block_InstructionMaxDuration = null
