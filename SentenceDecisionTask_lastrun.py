@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 16:28
+    on January 13, 2026, at 16:41
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -989,7 +989,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     if (validButtons[0] or validButtons[2]):
                         validClick = True
                         valid_response_time = validResponseMouseClick.mouseClock.getTime() - 3.0
-                        print(valid_response_time)
                         if validButtons[0]: 
                             valid_resp = left
                             valid_mouse_response = 'left'
@@ -1066,7 +1065,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('valid_mouse_key_resp', valid_mouse_response)
             trialLoop.addData('valid_is_correct?', valid_corr_text)
             trialLoop.addData('valid_accuracy', valid_corr)
-            
+            print(valid_response_time)
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if RSVP.maxDurationReached:
                 routineTimer.addTime(-RSVP.maxDuration)
@@ -1142,7 +1141,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         
         # --- Run Routine "Fixation_Cross" ---
         Fixation_Cross.forceEnded = routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 15.0:
+        while continueRoutine and routineTimer.getTime() < 6.0:
             # if trial has changed, end Routine now
             if hasattr(thisBlockLoop, 'status') and thisBlockLoop.status == STOPPING:
                 continueRoutine = False
@@ -1176,7 +1175,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # if text is stopping this frame...
             if text.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > text.tStartRefresh + 15-frameTolerance:
+                if tThisFlipGlobal > text.tStartRefresh + 6.0-frameTolerance:
                     # keep track of stop time/frame for later
                     text.tStop = t  # not accounting for scr refresh
                     text.tStopRefresh = tThisFlipGlobal  # on global time
@@ -1237,7 +1236,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         elif Fixation_Cross.forceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-15.000000)
+            routineTimer.addTime(-6.000000)
         
         # --- Prepare to start Routine "Midpoint_Break" ---
         # create an object to store info about Routine Midpoint_Break

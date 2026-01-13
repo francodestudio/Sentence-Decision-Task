@@ -886,6 +886,9 @@ function RSVPRoutineEachFrame() {
 var correctStr;
 var corr_text;
 var corr;
+var validStr;
+var valid_corr_text;
+var valid_corr;
 function RSVPRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'RSVP' ---
@@ -908,7 +911,16 @@ function RSVPRoutineEnd(snapshot) {
     
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeValidResponseMouseClick
-    /* Syntax Error: Fix Python code */
+    validStr = (correct_answer ? "True" : "False");
+    valid_corr_text = ((valid_resp === validStr) ? "yes" : ((valid_resp !== null) ? "no" : null));
+    valid_corr = ((valid_resp === validStr) ? "1" : ((valid_resp !== null) ? "0" : null));
+    trialLoop.addData("valid_rt", valid_response_time);
+    trialLoop.addData("valid_resp", valid_resp);
+    trialLoop.addData("valid_mouse_key_resp", valid_mouse_response);
+    trialLoop.addData("valid_is_correct?", valid_corr_text);
+    trialLoop.addData("valid_accuracy", valid_corr);
+    console.log(valid_response_time);
+    
     if (routineForceEnded) {
         routineTimer.reset();} else if (RSVPMaxDurationReached) {
         RSVPClock.add(RSVPMaxDuration);
@@ -938,7 +950,7 @@ function Fixation_CrossRoutineBegin(snapshot) {
     // keep track of whether this Routine was forcibly ended
     routineForceEnded = false;
     Fixation_CrossClock.reset(routineTimer.getTime());
-    routineTimer.add(15.000000);
+    routineTimer.add(6.000000);
     Fixation_CrossMaxDurationReached = false;
     // update component parameters for each repeat
     // Run 'Begin Routine' code from fixationScript
@@ -985,7 +997,7 @@ function Fixation_CrossRoutineEachFrame() {
     if (text.status === PsychoJS.Status.STARTED) {
     }
     
-    frameRemains = 0.0 + 15 - psychoJS.window.monitorFramePeriod * 0.75;// most of one frame period left
+    frameRemains = 0.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;// most of one frame period left
     if (text.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       // keep track of stop time/frame for later
       text.tStop = t;  // not accounting for scr refresh
@@ -1042,7 +1054,7 @@ function Fixation_CrossRoutineEnd(snapshot) {
         routineTimer.reset();} else if (Fixation_CrossMaxDurationReached) {
         Fixation_CrossClock.add(Fixation_CrossMaxDuration);
     } else {
-        Fixation_CrossClock.add(15.000000);
+        Fixation_CrossClock.add(6.000000);
     }
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
