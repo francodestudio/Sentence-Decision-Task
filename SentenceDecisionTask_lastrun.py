@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 10:36
+    on January 13, 2026, at 13:02
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -389,7 +389,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         left = 'False'
         right ='True'
         
-    dynamic_text = f"You are about to begin a Sentence Judgement Task.\n Please read the following Instructions carefully:\n\n Each sentence will be presented to you one word at a time. After the final word is displayed, a cross (+) will appear briefly.\nWhen you see the cross, decide whether the sentence could be literally true (e.g., “The funny sound was his snore”) or it's literally false (e.g., “The desert storm was a carrot”).\nRespond by using the mouse to select “True” or “False.” The cross will turn purple once your response has been registered.\nThis task is divided into 10 short sections (blocks), each containing a set of sentences.\n\n Use the mouse button to respond as follows:\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPlease press the \"spacebar\" key to begin."
+    dynamic_text = f"Sentence Judgement Task.\n\nYou will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.\nEach sentence will be presented to you one word at a time, followed by a fixation cross.\nFor each sentence, you must indicate {left}(left mouse click) if the sentence could be a literally true fact. For example, \"The funny sound was his snore\" is a statement that could be literally true; or {right}(right mouse click) if the sentence could not be a literally true fact. For example, \"The desert storm was a carrot\" could never be true.\nUse the mouse to indicate \"True\" or \"False\" for each sentence as quickly and accurately as you can. The cross will turn purple once your response has been registered.\nPress the \"spacebar\" to begin." 
     
     left_response = left
     right_response = right
@@ -1069,7 +1069,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     validButtons= validResponseMouseClick.getPressed()
                     if (validButtons[0] or validButtons[2]):
                         validClick = True
-                        #validResponseMouseClick.mouseClock.reset()
                         valid_response_time = validResponseMouseClick.mouseClock.getTime()
                         if validButtons[0]: 
                             valid_resp = left
@@ -1136,10 +1135,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('early_is_correct?', corr_text)
             trialLoop.addData('early_accuracy', corr)
             
-            print("early_response_time",early_response_time)
-            print("early_resp",early_response)
-            print('early_is_correct?', corr_text)
-            
             # store data for trialLoop (TrialHandler)
             # Run 'End Routine' code from storeValidResponseMouseClick
             
@@ -1154,9 +1149,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('valid_mouse_key_resp', valid_mouse_response)
             trialLoop.addData('valid_is_correct?', valid_corr_text)
             trialLoop.addData('valid_accuracy', valid_corr)
-            print("valid_response_time",valid_response_time)
-            print("valid_resp",valid_resp)
-            print('valid_is_correct?', valid_corr_text)
+            
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if RSVP.maxDurationReached:
                 routineTimer.addTime(-RSVP.maxDuration)
