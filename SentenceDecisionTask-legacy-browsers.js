@@ -837,6 +837,7 @@ function RSVPRoutineEachFrame() {
         validButtons = validResponseMouseClick.getPressed();
         if ((validButtons[0] || validButtons[2])) {
             validClick = true;
+            validResponseMouseClick.mouseClock.reset();
             valid_response_time = validResponseMouseClick.mouseClock.getTime();
             console.log(valid_response_time);
             if (validButtons[0]) {
