@@ -65,7 +65,6 @@ flowScheduler.add(blockLoopLoopEnd);
 
 
 
-
 flowScheduler.add(End_Task_RoutineRoutineBegin());
 flowScheduler.add(End_Task_RoutineRoutineEachFrame());
 flowScheduler.add(End_Task_RoutineRoutineEnd());
@@ -135,7 +134,6 @@ var left_response;
 var right_response;
 var InstructionText;
 var StartKeyboard;
-var Word_SetupClock;
 var RSVPClock;
 var StimuliText;
 var earlyMouseClick;
@@ -200,8 +198,6 @@ async function experimentInit() {
   
   StartKeyboard = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
-  // Initialize components for Routine "Word_Setup"
-  Word_SetupClock = new util.Clock();
   // Initialize components for Routine "RSVP"
   RSVPClock = new util.Clock();
   StimuliText = new visual.TextStim({
@@ -223,7 +219,7 @@ async function experimentInit() {
   LeftResponseInstruction = new visual.TextStim({
     win: psychoJS.window,
     name: 'LeftResponseInstruction',
-    text: left_response,
+    text: '',
     font: 'Arial',
     units: undefined, 
     pos: [(- 0.4), (- 0.3)], draggable: false, height: 0.035,  wrapWidth: undefined, ori: 0.0,
@@ -538,9 +534,6 @@ function trialLoopLoopBegin(trialLoopLoopScheduler, snapshot) {
     for (const thisTrialLoop of trialLoop) {
       snapshot = trialLoop.getSnapshot();
       trialLoopLoopScheduler.add(importConditions(snapshot));
-      trialLoopLoopScheduler.add(Word_SetupRoutineBegin(snapshot));
-      trialLoopLoopScheduler.add(Word_SetupRoutineEachFrame());
-      trialLoopLoopScheduler.add(Word_SetupRoutineEnd(snapshot));
       trialLoopLoopScheduler.add(RSVPRoutineBegin(snapshot));
       trialLoopLoopScheduler.add(RSVPRoutineEachFrame());
       trialLoopLoopScheduler.add(RSVPRoutineEnd(snapshot));
@@ -614,99 +607,10 @@ function blockLoopLoopEndIteration(scheduler, snapshot) {
 }
 
 
-var Word_SetupMaxDurationReached;
-var words;
-var Word_SetupMaxDuration;
-var Word_SetupComponents;
-function Word_SetupRoutineBegin(snapshot) {
-  return async function () {
-    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
-    
-    //--- Prepare to start Routine 'Word_Setup' ---
-    t = 0;
-    frameN = -1;
-    continueRoutine = true; // until we're told otherwise
-    // keep track of whether this Routine was forcibly ended
-    routineForceEnded = false;
-    Word_SetupClock.reset();
-    routineTimer.reset();
-    Word_SetupMaxDurationReached = false;
-    // update component parameters for each repeat
-    // Run 'Begin Routine' code from wordExtractionScript
-    words = Stimuli.split(" ");
-    
-    psychoJS.experiment.addData('Word_Setup.started', globalClock.getTime());
-    Word_SetupMaxDuration = null
-    // keep track of which components have finished
-    Word_SetupComponents = [];
-    
-    for (const thisComponent of Word_SetupComponents)
-      if ('status' in thisComponent)
-        thisComponent.status = PsychoJS.Status.NOT_STARTED;
-    return Scheduler.Event.NEXT;
-  }
-}
-
-
-function Word_SetupRoutineEachFrame() {
-  return async function () {
-    //--- Loop for each frame of Routine 'Word_Setup' ---
-    // get current time
-    t = Word_SetupClock.getTime();
-    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
-    // update/draw components on each frame
-    // check for quit (typically the Esc key)
-    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
-      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
-    }
-    
-    // check if the Routine should terminate
-    if (!continueRoutine) {  // a component has requested a forced-end of Routine
-      routineForceEnded = true;
-      return Scheduler.Event.NEXT;
-    }
-    
-    continueRoutine = false;  // reverts to True if at least one component still running
-    for (const thisComponent of Word_SetupComponents)
-      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
-        continueRoutine = true;
-        break;
-      }
-    
-    // refresh the screen if continuing
-    if (continueRoutine) {
-      return Scheduler.Event.FLIP_REPEAT;
-    } else {
-      return Scheduler.Event.NEXT;
-    }
-  };
-}
-
-
-function Word_SetupRoutineEnd(snapshot) {
-  return async function () {
-    //--- Ending Routine 'Word_Setup' ---
-    for (const thisComponent of Word_SetupComponents) {
-      if (typeof thisComponent.setAutoDraw === 'function') {
-        thisComponent.setAutoDraw(false);
-      }
-    }
-    psychoJS.experiment.addData('Word_Setup.stopped', globalClock.getTime());
-    // the Routine "Word_Setup" was not non-slip safe, so reset the non-slip timer
-    routineTimer.reset();
-    
-    // Routines running outside a loop should always advance the datafile row
-    if (currentLoop === psychoJS.experiment) {
-      psychoJS.experiment.nextEntry(snapshot);
-    }
-    return Scheduler.Event.NEXT;
-  }
-}
-
-
 var RSVPMaxDurationReached;
 var wordIndex;
 var nextWordTime;
+var words;
 var currentWord;
 var gotValidClick;
 var early_clicked;
@@ -736,6 +640,7 @@ function RSVPRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from currentWordScript
     wordIndex = 0;
     nextWordTime = 0;
+    words = Stimuli.split(" ");
     currentWord = words[wordIndex];
     
     // setup some python lists for storing info about the earlyMouseClick
@@ -844,6 +749,8 @@ function RSVPRoutineEachFrame() {
     
     // *LeftResponseInstruction* updates
     if (t >= 0.0 && LeftResponseInstruction.status === PsychoJS.Status.NOT_STARTED) {
+      // update params
+      LeftResponseInstruction.setText(left_response, false);
       // keep track of start time/frame for later
       LeftResponseInstruction.tStart = t;  // (not accounting for frame time here)
       LeftResponseInstruction.frameNStart = frameN;  // exact frame index
@@ -854,6 +761,8 @@ function RSVPRoutineEachFrame() {
     
     // if LeftResponseInstruction is active this frame...
     if (LeftResponseInstruction.status === PsychoJS.Status.STARTED) {
+      // update params
+      LeftResponseInstruction.setText(left_response, false);
     }
     
     frameRemains = 0.0 + 6.0 - psychoJS.window.monitorFramePeriod * 0.75;// most of one frame period left

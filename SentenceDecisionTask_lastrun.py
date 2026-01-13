@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 13:02
+    on January 13, 2026, at 14:27
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -389,7 +389,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         left = 'False'
         right ='True'
         
-    dynamic_text = f"Sentence Judgement Task.\n\nYou will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.\nEach sentence will be presented to you one word at a time, followed by a fixation cross.\nFor each sentence, you must indicate {left}(left mouse click) if the sentence could be a literally true fact. For example, \"The funny sound was his snore\" is a statement that could be literally true; or {right}(right mouse click) if the sentence could not be a literally true fact. For example, \"The desert storm was a carrot\" could never be true.\nUse the mouse to indicate \"True\" or \"False\" for each sentence as quickly and accurately as you can. The cross will turn purple once your response has been registered.\nPress the \"spacebar\" to begin." 
+    dynamic_text = f"Sentence Judgement Task.\n\nYou will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.\nEach sentence will be presented to you one word at a time, followed by a fixation cross.\nFor each sentence, you must indicate {left}(left mouse click) if the sentence could be a literally true fact. For example, \"The funny sound was his snore\" is a statement that could be literally true; or {right}(right mouse click) if the sentence could not be a literally true fact. For example, \"The desert storm was a carrot\" could never be true.\nUse the mouse to indicate \"True\" or \"False\" for each sentence as quickly and accurately as you can. The cross will turn purple once your response has been registered.\n\nPress the \"spacebar\" to begin." 
     
     left_response = left
     right_response = right
@@ -403,8 +403,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         depth=-2.0);
     StartKeyboard = keyboard.Keyboard(deviceName='StartKeyboard')
     
-    # --- Initialize components for Routine "Word_Setup" ---
-    
     # --- Initialize components for Routine "RSVP" ---
     StimuliText = visual.TextStim(win=win, name='StimuliText',
         text='',
@@ -417,7 +415,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     x, y = [None, None]
     earlyMouseClick.mouseClock = core.Clock()
     LeftResponseInstruction = visual.TextStim(win=win, name='LeftResponseInstruction',
-        text=left_response,
+        text='',
         font='Arial',
         pos=(-0.4, -0.3), draggable=False, height=0.035, wrapWidth=None, ori=0.0, 
         color='black', colorSpace='rgb', opacity=None, 
@@ -710,95 +708,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 for paramName in thisTrialLoop:
                     globals()[paramName] = thisTrialLoop[paramName]
             
-            # --- Prepare to start Routine "Word_Setup" ---
-            # create an object to store info about Routine Word_Setup
-            Word_Setup = data.Routine(
-                name='Word_Setup',
-                components=[],
-            )
-            Word_Setup.status = NOT_STARTED
-            continueRoutine = True
-            # update component parameters for each repeat
-            # Run 'Begin Routine' code from wordExtractionScript
-            words = Stimuli.split(' ')
-            
-            
-            
-            # store start times for Word_Setup
-            Word_Setup.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-            Word_Setup.tStart = globalClock.getTime(format='float')
-            Word_Setup.status = STARTED
-            thisExp.addData('Word_Setup.started', Word_Setup.tStart)
-            Word_Setup.maxDuration = None
-            # keep track of which components have finished
-            Word_SetupComponents = Word_Setup.components
-            for thisComponent in Word_Setup.components:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "Word_Setup" ---
-            Word_Setup.forceEnded = routineForceEnded = not continueRoutine
-            while continueRoutine:
-                # if trial has changed, end Routine now
-                if hasattr(thisTrialLoop, 'status') and thisTrialLoop.status == STOPPING:
-                    continueRoutine = False
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                
-                # check for quit (typically the Esc key)
-                if defaultKeyboard.getKeys(keyList=["escape"]):
-                    thisExp.status = FINISHED
-                if thisExp.status == FINISHED or endExpNow:
-                    endExperiment(thisExp, win=win)
-                    return
-                # pause experiment here if requested
-                if thisExp.status == PAUSED:
-                    pauseExperiment(
-                        thisExp=thisExp, 
-                        win=win, 
-                        timers=[routineTimer, globalClock], 
-                        currentRoutine=Word_Setup,
-                    )
-                    # skip the frame we paused on
-                    continue
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    Word_Setup.forceEnded = routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in Word_Setup.components:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "Word_Setup" ---
-            for thisComponent in Word_Setup.components:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            # store stop times for Word_Setup
-            Word_Setup.tStop = globalClock.getTime(format='float')
-            Word_Setup.tStopRefresh = tThisFlipGlobal
-            thisExp.addData('Word_Setup.stopped', Word_Setup.tStop)
-            # the Routine "Word_Setup" was not non-slip safe, so reset the non-slip timer
-            routineTimer.reset()
-            
             # --- Prepare to start Routine "RSVP" ---
             # create an object to store info about Routine RSVP
             RSVP = data.Routine(
@@ -810,11 +719,10 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # update component parameters for each repeat
             # Run 'Begin Routine' code from currentWordScript
             wordIndex = 0          
-            nextWordTime = 0    
+            nextWordTime = 0 
+            words = Stimuli.split(' ')
             currentWord = words[wordIndex]
             
-            
-                 
             
             # setup some python lists for storing info about the earlyMouseClick
             gotValidClick = False  # until a click is received
@@ -963,7 +871,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 # if LeftResponseInstruction is active this frame...
                 if LeftResponseInstruction.status == STARTED:
                     # update params
-                    pass
+                    LeftResponseInstruction.setText(left_response, log=False)
                 
                 # if LeftResponseInstruction is stopping this frame...
                 if LeftResponseInstruction.status == STARTED:
@@ -1119,9 +1027,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             RSVP.tStop = globalClock.getTime(format='float')
             RSVP.tStopRefresh = tThisFlipGlobal
             thisExp.addData('RSVP.stopped', RSVP.tStop)
-            # Run 'End Routine' code from currentWordScript
-            
-            
             # store data for trialLoop (TrialHandler)
             # Run 'End Routine' code from storeEarlyMouseClick
             correctStr = "True" if correct_answer else "False"
