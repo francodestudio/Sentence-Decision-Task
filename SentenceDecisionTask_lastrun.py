@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 14:27
+    on January 13, 2026, at 15:44
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -389,7 +389,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         left = 'False'
         right ='True'
         
-    dynamic_text = f"Sentence Judgement Task.\n\nYou will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.\nEach sentence will be presented to you one word at a time, followed by a fixation cross.\nFor each sentence, you must indicate {left}(left mouse click) if the sentence could be a literally true fact. For example, \"The funny sound was his snore\" is a statement that could be literally true; or {right}(right mouse click) if the sentence could not be a literally true fact. For example, \"The desert storm was a carrot\" could never be true.\nUse the mouse to indicate \"True\" or \"False\" for each sentence as quickly and accurately as you can. The cross will turn purple once your response has been registered.\n\nPress the \"spacebar\" to begin." 
+    dynamic_text = f"""Sentence Judgement Task.
+    \n\nYou will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.
+    \nEach sentence will be presented to you one word at a time,followed by a fixation cross.
+    \nFor each sentence,you must indicate
+    \n{left}(left mouse click) if the sentence could be a literally true fact.For example, \"The funny sound was his snore\" is a statement that could be literally true;or
+    \n{right}(right mouse click) if the sentence could not be a literally true fact.For example, \"The desert storm was a carrot\" could never be true.
+    \n\nUse the mouse to indicate \"True\" or \"False\" for each sentence as quickly and accurately as you can. 
+    The cross will turn purple once your response has been registered.
+    \n\nPress the \"spacebar\" to begin."""
     
     left_response = left
     right_response = right
@@ -397,7 +405,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     InstructionText = visual.TextStim(win=win, name='InstructionText',
         text=dynamic_text,
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.03, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=0.03, wrapWidth=1.0, ori=0.0, 
         color='black', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
@@ -978,6 +986,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     if (validButtons[0] or validButtons[2]):
                         validClick = True
                         valid_response_time = validResponseMouseClick.mouseClock.getTime()
+                        print(valid_response_time)
                         if validButtons[0]: 
                             valid_resp = left
                             valid_mouse_response = 'left'

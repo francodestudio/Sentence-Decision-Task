@@ -174,10 +174,21 @@ async function experimentInit() {
   }
   dynamic_text = `Sentence Judgement Task.
   
+  
   You will complete 10 blocks of sentence judgement, with a 6-second break in between blocks.
-  Each sentence will be presented to you one word at a time, followed by a fixation cross.
-  For each sentence, you must indicate ${left}(left mouse click) if the sentence could be a literally true fact. For example, "The funny sound was his snore" is a statement that could be literally true; or ${right}(right mouse click) if the sentence could not be a literally true fact. For example, "The desert storm was a carrot" could never be true.
-  Use the mouse to indicate "True" or "False" for each sentence as quickly and accurately as you can. The cross will turn purple once your response has been registered.
+  
+  Each sentence will be presented to you one word at a time,followed by a fixation cross.
+  
+  For each sentence,you must indicate
+  
+  ${left}(left mouse click) if the sentence could be a literally true fact.For example, "The funny sound was his snore" is a statement that could be literally true;or
+  
+  ${right}(right mouse click) if the sentence could not be a literally true fact.For example, "The desert storm was a carrot" could never be true.
+  
+  
+  Use the mouse to indicate "True" or "False" for each sentence as quickly and accurately as you can.
+  The cross will turn purple once your response has been registered.
+  
   
   Press the "spacebar" to begin.`
   ;
@@ -190,7 +201,7 @@ async function experimentInit() {
     text: dynamic_text,
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], draggable: false, height: 0.03,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], draggable: false, height: 0.03,  wrapWidth: 1.0, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('black'),  opacity: undefined,
     depth: -2.0 
@@ -831,6 +842,7 @@ function RSVPRoutineEachFrame() {
         if ((validButtons[0] || validButtons[2])) {
             validClick = true;
             valid_response_time = validResponseMouseClick.mouseClock.getTime();
+            console.log(valid_response_time);
             if (validButtons[0]) {
                 valid_resp = left;
                 valid_mouse_response = "left";
