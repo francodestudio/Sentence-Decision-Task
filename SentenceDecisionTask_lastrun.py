@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 09, 2026, at 16:37
+    on January 12, 2026, at 17:45
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -32,6 +32,12 @@ import os  # handy system and path functions
 import sys  # to get file system encoding
 
 from psychopy.hardware import keyboard
+
+# Run 'Before Experiment' code from fixationScript
+currentBlockNumber = 0
+startBlockInstruction =""
+# Run 'Before Experiment' code from blockInstructionScript
+
 
 # --- Setup global variables (available in all functions) ---
 # create a device manager to handle hardware (keyboards, mice, mirophones, speakers, etc.)
@@ -383,9 +389,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         left = 'False'
         right ='True'
         
-    dynamic_text = f"Judge whether each sentence is literally true or false\n\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPress spacebar to begin."
-    left_response = f"Left mouse click = {left}"
-    right_response = f"Right mouse click = {right}"
+    dynamic_text = f"Judge whether each sentence is literally true or false.\nThis task is divided into 10 short sections(blocks), each containing a set of sentences.\n\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPress spacebar to begin."
+    left_response = left
+    right_response = right
     
     InstructionText = visual.TextStim(win=win, name='InstructionText',
         text=dynamic_text,
@@ -468,6 +474,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         languageStyle='LTR',
         depth=0.0);
     breakKeyPress = keyboard.Keyboard(deviceName='breakKeyPress')
+    
+    # --- Initialize components for Routine "Start_Block_Instruction" ---
+    blockInstruction = visual.TextStim(win=win, name='blockInstruction',
+        text='',
+        font='Arial',
+        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        color='black', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=0.0);
     
     # --- Initialize components for Routine "End_Task_Routine" ---
     Instruction_Exit = visual.TextStim(win=win, name='Instruction_Exit',
@@ -1376,7 +1391,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         
         # --- Run Routine "Fixation_Cross" ---
         Fixation_Cross.forceEnded = routineForceEnded = not continueRoutine
-        while continueRoutine and routineTimer.getTime() < 18.0:
+        while continueRoutine and routineTimer.getTime() < 15.0:
             # if trial has changed, end Routine now
             if hasattr(thisBlockLoop, 'status') and thisBlockLoop.status == STOPPING:
                 continueRoutine = False
@@ -1410,7 +1425,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # if text is stopping this frame...
             if text.status == STARTED:
                 # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > text.tStartRefresh + 18-frameTolerance:
+                if tThisFlipGlobal > text.tStartRefresh + 15-frameTolerance:
                     # keep track of stop time/frame for later
                     text.tStop = t  # not accounting for scr refresh
                     text.tStopRefresh = tThisFlipGlobal  # on global time
@@ -1460,13 +1475,18 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         Fixation_Cross.tStop = globalClock.getTime(format='float')
         Fixation_Cross.tStopRefresh = tThisFlipGlobal
         thisExp.addData('Fixation_Cross.stopped', Fixation_Cross.tStop)
+        # Run 'End Routine' code from fixationScript
+        currentBlockNumber = (blockLoop.thisN)+2
+        startBlockInstruction = f"You are about to start block {currentBlockNumber} out of 10"
+        
+            
         # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
         if Fixation_Cross.maxDurationReached:
             routineTimer.addTime(-Fixation_Cross.maxDuration)
         elif Fixation_Cross.forceEnded:
             routineTimer.reset()
         else:
-            routineTimer.addTime(-18.000000)
+            routineTimer.addTime(-15.000000)
         
         # --- Prepare to start Routine "Midpoint_Break" ---
         # create an object to store info about Routine Midpoint_Break
@@ -1610,6 +1630,136 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         thisExp.addData('Midpoint_Break.stopped', Midpoint_Break.tStop)
         # the Routine "Midpoint_Break" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
+        
+        # --- Prepare to start Routine "Start_Block_Instruction" ---
+        # create an object to store info about Routine Start_Block_Instruction
+        Start_Block_Instruction = data.Routine(
+            name='Start_Block_Instruction',
+            components=[blockInstruction],
+        )
+        Start_Block_Instruction.status = NOT_STARTED
+        continueRoutine = True
+        # update component parameters for each repeat
+        blockInstruction.setText(startBlockInstruction )
+        # Run 'Begin Routine' code from blockInstructionScript
+        if (blockLoop.thisN == 9):
+            continueRoutine = False;
+        else:
+            continueRoutine = True
+           
+        # store start times for Start_Block_Instruction
+        Start_Block_Instruction.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
+        Start_Block_Instruction.tStart = globalClock.getTime(format='float')
+        Start_Block_Instruction.status = STARTED
+        thisExp.addData('Start_Block_Instruction.started', Start_Block_Instruction.tStart)
+        Start_Block_Instruction.maxDuration = None
+        # keep track of which components have finished
+        Start_Block_InstructionComponents = Start_Block_Instruction.components
+        for thisComponent in Start_Block_Instruction.components:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        # reset timers
+        t = 0
+        _timeToFirstFrame = win.getFutureFlipTime(clock="now")
+        frameN = -1
+        
+        # --- Run Routine "Start_Block_Instruction" ---
+        Start_Block_Instruction.forceEnded = routineForceEnded = not continueRoutine
+        while continueRoutine and routineTimer.getTime() < 3.0:
+            # if trial has changed, end Routine now
+            if hasattr(thisBlockLoop, 'status') and thisBlockLoop.status == STOPPING:
+                continueRoutine = False
+            # get current time
+            t = routineTimer.getTime()
+            tThisFlip = win.getFutureFlipTime(clock=routineTimer)
+            tThisFlipGlobal = win.getFutureFlipTime(clock=None)
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *blockInstruction* updates
+            
+            # if blockInstruction is starting this frame...
+            if blockInstruction.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                blockInstruction.frameNStart = frameN  # exact frame index
+                blockInstruction.tStart = t  # local t and not account for scr refresh
+                blockInstruction.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(blockInstruction, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'blockInstruction.started')
+                # update status
+                blockInstruction.status = STARTED
+                blockInstruction.setAutoDraw(True)
+            
+            # if blockInstruction is active this frame...
+            if blockInstruction.status == STARTED:
+                # update params
+                pass
+            
+            # if blockInstruction is stopping this frame...
+            if blockInstruction.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > blockInstruction.tStartRefresh + 3.0-frameTolerance:
+                    # keep track of stop time/frame for later
+                    blockInstruction.tStop = t  # not accounting for scr refresh
+                    blockInstruction.tStopRefresh = tThisFlipGlobal  # on global time
+                    blockInstruction.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'blockInstruction.stopped')
+                    # update status
+                    blockInstruction.status = FINISHED
+                    blockInstruction.setAutoDraw(False)
+            
+            # check for quit (typically the Esc key)
+            if defaultKeyboard.getKeys(keyList=["escape"]):
+                thisExp.status = FINISHED
+            if thisExp.status == FINISHED or endExpNow:
+                endExperiment(thisExp, win=win)
+                return
+            # pause experiment here if requested
+            if thisExp.status == PAUSED:
+                pauseExperiment(
+                    thisExp=thisExp, 
+                    win=win, 
+                    timers=[routineTimer, globalClock], 
+                    currentRoutine=Start_Block_Instruction,
+                )
+                # skip the frame we paused on
+                continue
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                Start_Block_Instruction.forceEnded = routineForceEnded = True
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in Start_Block_Instruction.components:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # --- Ending Routine "Start_Block_Instruction" ---
+        for thisComponent in Start_Block_Instruction.components:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        # store stop times for Start_Block_Instruction
+        Start_Block_Instruction.tStop = globalClock.getTime(format='float')
+        Start_Block_Instruction.tStopRefresh = tThisFlipGlobal
+        thisExp.addData('Start_Block_Instruction.stopped', Start_Block_Instruction.tStop)
+        # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
+        if Start_Block_Instruction.maxDurationReached:
+            routineTimer.addTime(-Start_Block_Instruction.maxDuration)
+        elif Start_Block_Instruction.forceEnded:
+            routineTimer.reset()
+        else:
+            routineTimer.addTime(-3.000000)
         # mark thisBlockLoop as finished
         if hasattr(thisBlockLoop, 'status'):
             thisBlockLoop.status = FINISHED
