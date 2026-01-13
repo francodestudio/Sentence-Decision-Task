@@ -990,9 +990,6 @@ function RSVPRoutineEnd(snapshot) {
     trialLoop.addData("early_mouse_key_resp", mouse_response);
     trialLoop.addData("early_is_correct?", corr_text);
     trialLoop.addData("early_accuracy", corr);
-    console.log("early_response_time", early_response_time);
-    console.log("early_resp", early_response);
-    console.log("early_is_correct?", corr_text);
     
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeValidResponseMouseClick
@@ -1004,9 +1001,6 @@ function RSVPRoutineEnd(snapshot) {
     trialLoop.addData("valid_mouse_key_resp", valid_mouse_response);
     trialLoop.addData("valid_is_correct?", valid_corr_text);
     trialLoop.addData("valid_accuracy", valid_corr);
-    console.log("valid_response_time", valid_response_time);
-    console.log("valid_resp", valid_resp);
-    console.log("valid_is_correct?", valid_corr_text);
     
     if (routineForceEnded) {
         routineTimer.reset();} else if (RSVPMaxDurationReached) {
