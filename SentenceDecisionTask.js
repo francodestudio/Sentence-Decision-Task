@@ -838,9 +838,6 @@ function RSVPRoutineEachFrame() {
     }
     
     // Run 'Each Frame' code from storeValidResponseMouseClick
-    if (((t >= 3.0) && (validResponseMouseClick.status === NOT_STARTED))) {
-        validResponseMouseClick.mouseClock.reset();
-    }
     if (((t >= 3.0) && (! validClick))) {
         validButtons = validResponseMouseClick.getPressed();
         if ((validButtons[0] || validButtons[2])) {
@@ -924,6 +921,7 @@ function RSVPRoutineEnd(snapshot) {
     trialLoop.addData("valid_is_correct?", valid_corr_text);
     trialLoop.addData("valid_accuracy", valid_corr);
     console.log(valid_response_time);
+    validResponseMouseClick.mouseClock.reset();
     
     if (routineForceEnded) {
         routineTimer.reset();} else if (RSVPMaxDurationReached) {

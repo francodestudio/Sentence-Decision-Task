@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 16:41
+    on January 13, 2026, at 16:52
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -981,9 +981,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         responsefixationCrossDisplay.status = FINISHED
                         responsefixationCrossDisplay.setAutoDraw(False)
                 # Run 'Each Frame' code from storeValidResponseMouseClick
-                if t >= 3.0 and validResponseMouseClick.status == NOT_STARTED:
-                    validResponseMouseClick.mouseClock.reset()
-                
                 if t>=3.0 and not validClick:
                     validButtons= validResponseMouseClick.getPressed()
                     if (validButtons[0] or validButtons[2]):
@@ -1065,6 +1062,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('valid_mouse_key_resp', valid_mouse_response)
             trialLoop.addData('valid_is_correct?', valid_corr_text)
             trialLoop.addData('valid_accuracy', valid_corr)
+            print(valid_response_time)
+            validResponseMouseClick.mouseClock.reset()
             print(valid_response_time)
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if RSVP.maxDurationReached:
