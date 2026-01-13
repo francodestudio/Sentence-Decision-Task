@@ -665,6 +665,7 @@ function RSVPRoutineBegin(snapshot) {
     
     // setup some python lists for storing info about the validResponseMouseClick
     gotValidClick = false; // until a click is received
+    validResponseMouseClick.mouseClock.reset();
     // Run 'Begin Routine' code from storeValidResponseMouseClick
     validClick = false;
     valid_response_time = [];
@@ -837,13 +838,14 @@ function RSVPRoutineEachFrame() {
     }
     
     // Run 'Each Frame' code from storeValidResponseMouseClick
+    if (((t >= 3.0) && (validResponseMouseClick.status === NOT_STARTED))) {
+        validResponseMouseClick.mouseClock.reset();
+    }
     if (((t >= 3.0) && (! validClick))) {
         validButtons = validResponseMouseClick.getPressed();
         if ((validButtons[0] || validButtons[2])) {
             validClick = true;
-            validResponseMouseClick.mouseClock.reset();
-            valid_response_time = validResponseMouseClick.mouseClock.getTime();
-            console.log(valid_response_time);
+            valid_response_time = (validResponseMouseClick.mouseClock.getTime() - 3.0);
             if (validButtons[0]) {
                 valid_resp = left;
                 valid_mouse_response = "left";
@@ -888,9 +890,6 @@ function RSVPRoutineEachFrame() {
 var correctStr;
 var corr_text;
 var corr;
-var validStr;
-var valid_corr_text;
-var valid_corr;
 function RSVPRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'RSVP' ---
@@ -913,15 +912,7 @@ function RSVPRoutineEnd(snapshot) {
     
     // store data for psychoJS.experiment (ExperimentHandler)
     // Run 'End Routine' code from storeValidResponseMouseClick
-    validStr = (correct_answer ? "True" : "False");
-    valid_corr_text = ((valid_resp === validStr) ? "yes" : ((valid_resp !== null) ? "no" : null));
-    valid_corr = ((valid_resp === validStr) ? "1" : ((valid_resp !== null) ? "0" : null));
-    trialLoop.addData("valid_rt", valid_response_time);
-    trialLoop.addData("valid_resp", valid_resp);
-    trialLoop.addData("valid_mouse_key_resp", valid_mouse_response);
-    trialLoop.addData("valid_is_correct?", valid_corr_text);
-    trialLoop.addData("valid_accuracy", valid_corr);
-    
+    /* Syntax Error: Fix Python code */
     if (routineForceEnded) {
         routineTimer.reset();} else if (RSVPMaxDurationReached) {
         RSVPClock.add(RSVPMaxDuration);
