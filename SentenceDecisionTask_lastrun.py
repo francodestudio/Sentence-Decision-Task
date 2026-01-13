@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 12, 2026, at 17:45
+    on January 13, 2026, at 10:36
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -389,14 +389,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         left = 'False'
         right ='True'
         
-    dynamic_text = f"Judge whether each sentence is literally true or false.\nThis task is divided into 10 short sections(blocks), each containing a set of sentences.\n\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPress spacebar to begin."
+    dynamic_text = f"You are about to begin a Sentence Judgement Task.\n Please read the following Instructions carefully:\n\n Each sentence will be presented to you one word at a time. After the final word is displayed, a cross (+) will appear briefly.\nWhen you see the cross, decide whether the sentence could be literally true (e.g., “The funny sound was his snore”) or it's literally false (e.g., “The desert storm was a carrot”).\nRespond by using the mouse to select “True” or “False.” The cross will turn purple once your response has been registered.\nThis task is divided into 10 short sections (blocks), each containing a set of sentences.\n\n Use the mouse button to respond as follows:\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPlease press the \"spacebar\" key to begin."
+    
     left_response = left
     right_response = right
     
     InstructionText = visual.TextStim(win=win, name='InstructionText',
         text=dynamic_text,
         font='Arial',
-        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        pos=(0, 0), draggable=False, height=0.03, wrapWidth=None, ori=0.0, 
         color='black', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-2.0);
@@ -412,49 +413,33 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         color='black', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=-1.0);
+    earlyMouseClick = event.Mouse(win=win)
+    x, y = [None, None]
+    earlyMouseClick.mouseClock = core.Clock()
     LeftResponseInstruction = visual.TextStim(win=win, name='LeftResponseInstruction',
         text=left_response,
         font='Arial',
         pos=(-0.4, -0.3), draggable=False, height=0.035, wrapWidth=None, ori=0.0, 
         color='black', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-2.0);
+        depth=-4.0);
     rightResponseInstruction = visual.TextStim(win=win, name='rightResponseInstruction',
         text=right_response,
         font='Arial',
         pos=(0.4, -0.3), draggable=False, height=0.035, wrapWidth=None, ori=0.0, 
         color='black', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-3.0);
-    earlyMouseClick = event.Mouse(win=win)
+        depth=-5.0);
+    validResponseMouseClick = event.Mouse(win=win)
     x, y = [None, None]
-    earlyMouseClick.mouseClock = core.Clock()
-    
-    # --- Initialize components for Routine "Particpant_Response" ---
-    validMouseClick = event.Mouse(win=win)
-    x, y = [None, None]
-    validMouseClick.mouseClock = core.Clock()
-    responsefixationCross = visual.TextStim(win=win, name='responsefixationCross',
-        text='',
+    validResponseMouseClick.mouseClock = core.Clock()
+    responsefixationCrossDisplay = visual.TextStim(win=win, name='responsefixationCrossDisplay',
+        text='+',
         font='Arial',
         pos=(0, 0), draggable=False, height=0.08, wrapWidth=None, ori=0.0, 
         color='black', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-1.0);
-    LeftResponseInstruction_2 = visual.TextStim(win=win, name='LeftResponseInstruction_2',
-        text=left_response,
-        font='Arial',
-        pos=(-0.4, -0.3), draggable=False, height=0.035, wrapWidth=None, ori=0.0, 
-        color='black', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-3.0);
-    rightResponseInstruction_2 = visual.TextStim(win=win, name='rightResponseInstruction_2',
-        text=right_response,
-        font='Arial',
-        pos=(0.4, -0.3), draggable=False, height=0.035, wrapWidth=None, ori=0.0, 
-        color='black', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=-4.0);
+        depth=-7.0);
     
     # --- Initialize components for Routine "Fixation_Cross" ---
     text = visual.TextStim(win=win, name='text',
@@ -818,7 +803,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             # create an object to store info about Routine RSVP
             RSVP = data.Routine(
                 name='RSVP',
-                components=[StimuliText, LeftResponseInstruction, rightResponseInstruction, earlyMouseClick],
+                components=[StimuliText, earlyMouseClick, LeftResponseInstruction, rightResponseInstruction, validResponseMouseClick, responsefixationCrossDisplay],
             )
             RSVP.status = NOT_STARTED
             continueRoutine = True
@@ -835,10 +820,20 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             gotValidClick = False  # until a click is received
             earlyMouseClick.mouseClock.reset()
             # Run 'Begin Routine' code from storeEarlyMouseClick
-            clicked = False
+            early_clicked = False
             early_response_time=[]
             early_response= ''
             mouse_response =''
+            
+            
+            # setup some python lists for storing info about the validResponseMouseClick
+            gotValidClick = False  # until a click is received
+            # Run 'Begin Routine' code from storeValidResponseMouseClick
+            validClick = False
+            valid_response_time =[]
+            valid_resp = ''
+            responsefixationCrossDisplay.setColor('black')
+            valid_mouse_response =''
             
             
             
@@ -864,7 +859,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             
             # --- Run Routine "RSVP" ---
             RSVP.forceEnded = routineForceEnded = not continueRoutine
-            while continueRoutine and routineTimer.getTime() < 3.0:
+            while continueRoutine and routineTimer.getTime() < 6.0:
                 # if trial has changed, end Routine now
                 if hasattr(thisTrialLoop, 'status') and thisTrialLoop.status == STOPPING:
                     continueRoutine = False
@@ -911,6 +906,46 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         StimuliText.status = FINISHED
                         StimuliText.setAutoDraw(False)
+                # *earlyMouseClick* updates
+                
+                # if earlyMouseClick is starting this frame...
+                if earlyMouseClick.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    earlyMouseClick.frameNStart = frameN  # exact frame index
+                    earlyMouseClick.tStart = t  # local t and not account for scr refresh
+                    earlyMouseClick.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(earlyMouseClick, 'tStartRefresh')  # time at next scr refresh
+                    # update status
+                    earlyMouseClick.status = STARTED
+                    prevButtonState = earlyMouseClick.getPressed()  # if button is down already this ISN'T a new click
+                
+                # if earlyMouseClick is stopping this frame...
+                if earlyMouseClick.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > earlyMouseClick.tStartRefresh + 3.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        earlyMouseClick.tStop = t  # not accounting for scr refresh
+                        earlyMouseClick.tStopRefresh = tThisFlipGlobal  # on global time
+                        earlyMouseClick.frameNStop = frameN  # exact frame index
+                        # update status
+                        earlyMouseClick.status = FINISHED
+                # Run 'Each Frame' code from storeEarlyMouseClick
+                if t < 3.0 and not early_clicked:
+                    buttons = earlyMouseClick.getPressed()
+                    if (buttons[0] or buttons[2]):
+                        early_clicked = True
+                        early_response_time= earlyMouseClick.mouseClock.getTime()
+                        if buttons[0]: 
+                            early_response = left
+                            mouse_response = 'left'
+                            
+                        elif buttons[2]:  
+                            early_response = right
+                            mouse_response = 'right'
+                        
+                
+                
+                       
                 
                 # *LeftResponseInstruction* updates
                 
@@ -933,7 +968,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 # if LeftResponseInstruction is stopping this frame...
                 if LeftResponseInstruction.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > LeftResponseInstruction.tStartRefresh + 3-frameTolerance:
+                    if tThisFlipGlobal > LeftResponseInstruction.tStartRefresh + 6.0-frameTolerance:
                         # keep track of stop time/frame for later
                         LeftResponseInstruction.tStop = t  # not accounting for scr refresh
                         LeftResponseInstruction.tStopRefresh = tThisFlipGlobal  # on global time
@@ -963,7 +998,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 # if rightResponseInstruction is stopping this frame...
                 if rightResponseInstruction.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > rightResponseInstruction.tStartRefresh + 3-frameTolerance:
+                    if tThisFlipGlobal > rightResponseInstruction.tStartRefresh + 6.0-frameTolerance:
                         # keep track of stop time/frame for later
                         rightResponseInstruction.tStop = t  # not accounting for scr refresh
                         rightResponseInstruction.tStopRefresh = tThisFlipGlobal  # on global time
@@ -971,43 +1006,78 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                         # update status
                         rightResponseInstruction.status = FINISHED
                         rightResponseInstruction.setAutoDraw(False)
-                # *earlyMouseClick* updates
+                # *validResponseMouseClick* updates
                 
-                # if earlyMouseClick is starting this frame...
-                if earlyMouseClick.status == NOT_STARTED and t >= 0.0-frameTolerance:
+                # if validResponseMouseClick is starting this frame...
+                if validResponseMouseClick.status == NOT_STARTED and tThisFlip >= 3.0-frameTolerance:
                     # keep track of start time/frame for later
-                    earlyMouseClick.frameNStart = frameN  # exact frame index
-                    earlyMouseClick.tStart = t  # local t and not account for scr refresh
-                    earlyMouseClick.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(earlyMouseClick, 'tStartRefresh')  # time at next scr refresh
+                    validResponseMouseClick.frameNStart = frameN  # exact frame index
+                    validResponseMouseClick.tStart = t  # local t and not account for scr refresh
+                    validResponseMouseClick.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(validResponseMouseClick, 'tStartRefresh')  # time at next scr refresh
                     # update status
-                    earlyMouseClick.status = STARTED
-                    prevButtonState = earlyMouseClick.getPressed()  # if button is down already this ISN'T a new click
+                    validResponseMouseClick.status = STARTED
+                    validResponseMouseClick.mouseClock.reset()
+                    prevButtonState = validResponseMouseClick.getPressed()  # if button is down already this ISN'T a new click
                 
-                # if earlyMouseClick is stopping this frame...
-                if earlyMouseClick.status == STARTED:
+                # if validResponseMouseClick is stopping this frame...
+                if validResponseMouseClick.status == STARTED:
                     # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > earlyMouseClick.tStartRefresh + 3-frameTolerance:
+                    if tThisFlipGlobal > validResponseMouseClick.tStartRefresh + 3.0-frameTolerance:
                         # keep track of stop time/frame for later
-                        earlyMouseClick.tStop = t  # not accounting for scr refresh
-                        earlyMouseClick.tStopRefresh = tThisFlipGlobal  # on global time
-                        earlyMouseClick.frameNStop = frameN  # exact frame index
+                        validResponseMouseClick.tStop = t  # not accounting for scr refresh
+                        validResponseMouseClick.tStopRefresh = tThisFlipGlobal  # on global time
+                        validResponseMouseClick.frameNStop = frameN  # exact frame index
                         # update status
-                        earlyMouseClick.status = FINISHED
-                # Run 'Each Frame' code from storeEarlyMouseClick
-                buttons = earlyMouseClick.getPressed()
-                if not clicked and (buttons[0] or buttons[2]):
-                    clicked = True
-                    early_response_time= earlyMouseClick.mouseClock.getTime()
-                    if buttons[0]: 
-                        early_response = left
-                        mouse_response = 'left'
-                        
-                    elif buttons[2]:  
-                        early_response = right
-                        mouse_response = 'right'
-                        
+                        validResponseMouseClick.status = FINISHED
                 
+                # *responsefixationCrossDisplay* updates
+                
+                # if responsefixationCrossDisplay is starting this frame...
+                if responsefixationCrossDisplay.status == NOT_STARTED and tThisFlip >= 3.0-frameTolerance:
+                    # keep track of start time/frame for later
+                    responsefixationCrossDisplay.frameNStart = frameN  # exact frame index
+                    responsefixationCrossDisplay.tStart = t  # local t and not account for scr refresh
+                    responsefixationCrossDisplay.tStartRefresh = tThisFlipGlobal  # on global time
+                    win.timeOnFlip(responsefixationCrossDisplay, 'tStartRefresh')  # time at next scr refresh
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'responsefixationCrossDisplay.started')
+                    # update status
+                    responsefixationCrossDisplay.status = STARTED
+                    responsefixationCrossDisplay.setAutoDraw(True)
+                
+                # if responsefixationCrossDisplay is active this frame...
+                if responsefixationCrossDisplay.status == STARTED:
+                    # update params
+                    pass
+                
+                # if responsefixationCrossDisplay is stopping this frame...
+                if responsefixationCrossDisplay.status == STARTED:
+                    # is it time to stop? (based on global clock, using actual start)
+                    if tThisFlipGlobal > responsefixationCrossDisplay.tStartRefresh + 3.0-frameTolerance:
+                        # keep track of stop time/frame for later
+                        responsefixationCrossDisplay.tStop = t  # not accounting for scr refresh
+                        responsefixationCrossDisplay.tStopRefresh = tThisFlipGlobal  # on global time
+                        responsefixationCrossDisplay.frameNStop = frameN  # exact frame index
+                        # add timestamp to datafile
+                        thisExp.timestampOnFlip(win, 'responsefixationCrossDisplay.stopped')
+                        # update status
+                        responsefixationCrossDisplay.status = FINISHED
+                        responsefixationCrossDisplay.setAutoDraw(False)
+                # Run 'Each Frame' code from storeValidResponseMouseClick
+                if t>=3.0 and not validClick:
+                    validButtons= validResponseMouseClick.getPressed()
+                    if (validButtons[0] or validButtons[2]):
+                        validClick = True
+                        #validResponseMouseClick.mouseClock.reset()
+                        valid_response_time = validResponseMouseClick.mouseClock.getTime()
+                        if validButtons[0]: 
+                            valid_resp = left
+                            valid_mouse_response = 'left'
+                        elif validButtons[2]:  
+                            valid_resp= right  
+                            valid_mouse_response = 'right'
+                        responsefixationCrossDisplay.setColor('purple')
                 
                        
                 
@@ -1050,6 +1120,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             RSVP.tStop = globalClock.getTime(format='float')
             RSVP.tStopRefresh = tThisFlipGlobal
             thisExp.addData('RSVP.stopped', RSVP.tStop)
+            # Run 'End Routine' code from currentWordScript
+            
+            
             # store data for trialLoop (TrialHandler)
             # Run 'End Routine' code from storeEarlyMouseClick
             correctStr = "True" if correct_answer else "False"
@@ -1063,266 +1136,34 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('early_is_correct?', corr_text)
             trialLoop.addData('early_accuracy', corr)
             
+            print("early_response_time",early_response_time)
+            print("early_resp",early_response)
+            print('early_is_correct?', corr_text)
+            
+            # store data for trialLoop (TrialHandler)
+            # Run 'End Routine' code from storeValidResponseMouseClick
+            
+            # Score correctness
+            validStr = "True" if correct_answer else "False"
+            valid_corr_text = 'yes' if valid_resp == validStr else 'no' if valid_resp is not None else None
+            valid_corr = '1' if valid_resp == validStr else '0' if valid_resp is not None else None
+            
+            # Record data to CSV
+            trialLoop.addData('valid_rt', valid_response_time)
+            trialLoop.addData('valid_resp', valid_resp)
+            trialLoop.addData('valid_mouse_key_resp', valid_mouse_response)
+            trialLoop.addData('valid_is_correct?', valid_corr_text)
+            trialLoop.addData('valid_accuracy', valid_corr)
+            print("valid_response_time",valid_response_time)
+            print("valid_resp",valid_resp)
+            print('valid_is_correct?', valid_corr_text)
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if RSVP.maxDurationReached:
                 routineTimer.addTime(-RSVP.maxDuration)
             elif RSVP.forceEnded:
                 routineTimer.reset()
             else:
-                routineTimer.addTime(-3.000000)
-            
-            # --- Prepare to start Routine "Particpant_Response" ---
-            # create an object to store info about Routine Particpant_Response
-            Particpant_Response = data.Routine(
-                name='Particpant_Response',
-                components=[validMouseClick, responsefixationCross, LeftResponseInstruction_2, rightResponseInstruction_2],
-            )
-            Particpant_Response.status = NOT_STARTED
-            continueRoutine = True
-            # update component parameters for each repeat
-            # setup some python lists for storing info about the validMouseClick
-            gotValidClick = False  # until a click is received
-            validMouseClick.mouseClock.reset()
-            # Run 'Begin Routine' code from storeValidMouseClick
-            clicked = False
-            response_time =[]
-            resp = ''
-            responsefixationCross.setColor('black')
-            
-            
-            # store start times for Particpant_Response
-            Particpant_Response.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-            Particpant_Response.tStart = globalClock.getTime(format='float')
-            Particpant_Response.status = STARTED
-            thisExp.addData('Particpant_Response.started', Particpant_Response.tStart)
-            Particpant_Response.maxDuration = None
-            # keep track of which components have finished
-            Particpant_ResponseComponents = Particpant_Response.components
-            for thisComponent in Particpant_Response.components:
-                thisComponent.tStart = None
-                thisComponent.tStop = None
-                thisComponent.tStartRefresh = None
-                thisComponent.tStopRefresh = None
-                if hasattr(thisComponent, 'status'):
-                    thisComponent.status = NOT_STARTED
-            # reset timers
-            t = 0
-            _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-            frameN = -1
-            
-            # --- Run Routine "Particpant_Response" ---
-            Particpant_Response.forceEnded = routineForceEnded = not continueRoutine
-            while continueRoutine and routineTimer.getTime() < 3.0:
-                # if trial has changed, end Routine now
-                if hasattr(thisTrialLoop, 'status') and thisTrialLoop.status == STOPPING:
-                    continueRoutine = False
-                # get current time
-                t = routineTimer.getTime()
-                tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-                tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-                frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-                # update/draw components on each frame
-                # *validMouseClick* updates
-                
-                # if validMouseClick is starting this frame...
-                if validMouseClick.status == NOT_STARTED and t >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    validMouseClick.frameNStart = frameN  # exact frame index
-                    validMouseClick.tStart = t  # local t and not account for scr refresh
-                    validMouseClick.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(validMouseClick, 'tStartRefresh')  # time at next scr refresh
-                    # update status
-                    validMouseClick.status = STARTED
-                    prevButtonState = validMouseClick.getPressed()  # if button is down already this ISN'T a new click
-                
-                # if validMouseClick is stopping this frame...
-                if validMouseClick.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > validMouseClick.tStartRefresh + 3.0-frameTolerance:
-                        # keep track of stop time/frame for later
-                        validMouseClick.tStop = t  # not accounting for scr refresh
-                        validMouseClick.tStopRefresh = tThisFlipGlobal  # on global time
-                        validMouseClick.frameNStop = frameN  # exact frame index
-                        # update status
-                        validMouseClick.status = FINISHED
-                
-                # *responsefixationCross* updates
-                
-                # if responsefixationCross is starting this frame...
-                if responsefixationCross.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    responsefixationCross.frameNStart = frameN  # exact frame index
-                    responsefixationCross.tStart = t  # local t and not account for scr refresh
-                    responsefixationCross.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(responsefixationCross, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'responsefixationCross.started')
-                    # update status
-                    responsefixationCross.status = STARTED
-                    responsefixationCross.setAutoDraw(True)
-                
-                # if responsefixationCross is active this frame...
-                if responsefixationCross.status == STARTED:
-                    # update params
-                    responsefixationCross.setText('+', log=False)
-                
-                # if responsefixationCross is stopping this frame...
-                if responsefixationCross.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > responsefixationCross.tStartRefresh + 3.0-frameTolerance:
-                        # keep track of stop time/frame for later
-                        responsefixationCross.tStop = t  # not accounting for scr refresh
-                        responsefixationCross.tStopRefresh = tThisFlipGlobal  # on global time
-                        responsefixationCross.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'responsefixationCross.stopped')
-                        # update status
-                        responsefixationCross.status = FINISHED
-                        responsefixationCross.setAutoDraw(False)
-                # Run 'Each Frame' code from storeValidMouseClick
-                buttons = validMouseClick.getPressed()
-                if not clicked and (buttons[0] or buttons[2]):
-                    clicked = True
-                    response_time = validMouseClick.mouseClock.getTime()
-                    if buttons[0]: 
-                        resp = left
-                        mouse_response = 'left'
-                    elif buttons[2]:  
-                        resp= right  
-                        mouse_response = 'right'
-                    responsefixationCross.setColor('red')
-                
-                       
-                
-                # *LeftResponseInstruction_2* updates
-                
-                # if LeftResponseInstruction_2 is starting this frame...
-                if LeftResponseInstruction_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    LeftResponseInstruction_2.frameNStart = frameN  # exact frame index
-                    LeftResponseInstruction_2.tStart = t  # local t and not account for scr refresh
-                    LeftResponseInstruction_2.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(LeftResponseInstruction_2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'LeftResponseInstruction_2.started')
-                    # update status
-                    LeftResponseInstruction_2.status = STARTED
-                    LeftResponseInstruction_2.setAutoDraw(True)
-                
-                # if LeftResponseInstruction_2 is active this frame...
-                if LeftResponseInstruction_2.status == STARTED:
-                    # update params
-                    pass
-                
-                # if LeftResponseInstruction_2 is stopping this frame...
-                if LeftResponseInstruction_2.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > LeftResponseInstruction_2.tStartRefresh + 3.0-frameTolerance:
-                        # keep track of stop time/frame for later
-                        LeftResponseInstruction_2.tStop = t  # not accounting for scr refresh
-                        LeftResponseInstruction_2.tStopRefresh = tThisFlipGlobal  # on global time
-                        LeftResponseInstruction_2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'LeftResponseInstruction_2.stopped')
-                        # update status
-                        LeftResponseInstruction_2.status = FINISHED
-                        LeftResponseInstruction_2.setAutoDraw(False)
-                
-                # *rightResponseInstruction_2* updates
-                
-                # if rightResponseInstruction_2 is starting this frame...
-                if rightResponseInstruction_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-                    # keep track of start time/frame for later
-                    rightResponseInstruction_2.frameNStart = frameN  # exact frame index
-                    rightResponseInstruction_2.tStart = t  # local t and not account for scr refresh
-                    rightResponseInstruction_2.tStartRefresh = tThisFlipGlobal  # on global time
-                    win.timeOnFlip(rightResponseInstruction_2, 'tStartRefresh')  # time at next scr refresh
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'rightResponseInstruction_2.started')
-                    # update status
-                    rightResponseInstruction_2.status = STARTED
-                    rightResponseInstruction_2.setAutoDraw(True)
-                
-                # if rightResponseInstruction_2 is active this frame...
-                if rightResponseInstruction_2.status == STARTED:
-                    # update params
-                    pass
-                
-                # if rightResponseInstruction_2 is stopping this frame...
-                if rightResponseInstruction_2.status == STARTED:
-                    # is it time to stop? (based on global clock, using actual start)
-                    if tThisFlipGlobal > rightResponseInstruction_2.tStartRefresh + 3.0-frameTolerance:
-                        # keep track of stop time/frame for later
-                        rightResponseInstruction_2.tStop = t  # not accounting for scr refresh
-                        rightResponseInstruction_2.tStopRefresh = tThisFlipGlobal  # on global time
-                        rightResponseInstruction_2.frameNStop = frameN  # exact frame index
-                        # add timestamp to datafile
-                        thisExp.timestampOnFlip(win, 'rightResponseInstruction_2.stopped')
-                        # update status
-                        rightResponseInstruction_2.status = FINISHED
-                        rightResponseInstruction_2.setAutoDraw(False)
-                
-                # check for quit (typically the Esc key)
-                if defaultKeyboard.getKeys(keyList=["escape"]):
-                    thisExp.status = FINISHED
-                if thisExp.status == FINISHED or endExpNow:
-                    endExperiment(thisExp, win=win)
-                    return
-                # pause experiment here if requested
-                if thisExp.status == PAUSED:
-                    pauseExperiment(
-                        thisExp=thisExp, 
-                        win=win, 
-                        timers=[routineTimer, globalClock], 
-                        currentRoutine=Particpant_Response,
-                    )
-                    # skip the frame we paused on
-                    continue
-                
-                # check if all components have finished
-                if not continueRoutine:  # a component has requested a forced-end of Routine
-                    Particpant_Response.forceEnded = routineForceEnded = True
-                    break
-                continueRoutine = False  # will revert to True if at least one component still running
-                for thisComponent in Particpant_Response.components:
-                    if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                        continueRoutine = True
-                        break  # at least one component has not yet finished
-                
-                # refresh the screen
-                if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                    win.flip()
-            
-            # --- Ending Routine "Particpant_Response" ---
-            for thisComponent in Particpant_Response.components:
-                if hasattr(thisComponent, "setAutoDraw"):
-                    thisComponent.setAutoDraw(False)
-            # store stop times for Particpant_Response
-            Particpant_Response.tStop = globalClock.getTime(format='float')
-            Particpant_Response.tStopRefresh = tThisFlipGlobal
-            thisExp.addData('Particpant_Response.stopped', Particpant_Response.tStop)
-            # store data for trialLoop (TrialHandler)
-            # Run 'End Routine' code from storeValidMouseClick
-            
-            # Score correctness
-            correctStr = "True" if correct_answer else "False"
-            corr_text = 'yes' if resp == correctStr else 'no' if resp is not None else None
-            corr = '1' if resp == correctStr else '0' if resp is not None else None
-            
-            # Record data to CSV
-            trialLoop.addData('valid_rt', response_time)
-            trialLoop.addData('valid_resp', resp)
-            trialLoop.addData('valid_mouse_key_resp', mouse_response)
-            trialLoop.addData('valid_is_correct?', corr_text)
-            trialLoop.addData('valid_accuracy', corr)
-            
-            # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-            if Particpant_Response.maxDurationReached:
-                routineTimer.addTime(-Particpant_Response.maxDuration)
-            elif Particpant_Response.forceEnded:
-                routineTimer.reset()
-            else:
-                routineTimer.addTime(-3.000000)
+                routineTimer.addTime(-6.000000)
             # mark thisTrialLoop as finished
             if hasattr(thisTrialLoop, 'status'):
                 thisTrialLoop.status = FINISHED

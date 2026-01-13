@@ -115,8 +115,8 @@
       <CodeComponent name="mouseMappingScript" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="if expInfo[&quot;tf_mapping&quot;] == 'TrueFalse':&amp;#10;    left = 'True'&amp;#10;    right = 'False'&amp;#10;   &amp;#10;else:&amp;#10;    left = 'False'&amp;#10;    right ='True'&amp;#10;    &amp;#10;dynamic_text = f&quot;Judge whether each sentence is literally true or false.\nThis task is divided into 10 short sections(blocks), each containing a set of sentences.\n\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPress spacebar to begin.&quot;&amp;#10;left_response = left&amp;#10;right_response = right&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="if ((expInfo[&quot;tf_mapping&quot;] === &quot;TrueFalse&quot;)) {&amp;#10;    left = &quot;True&quot;;&amp;#10;    right = &quot;False&quot;;&amp;#10;} else {&amp;#10;    left = &quot;False&quot;;&amp;#10;    right = &quot;True&quot;;&amp;#10;}&amp;#10;dynamic_text = `Judge whether each sentence is literally true or false.&amp;#10;This task is divided into 10 short sections(blocks), each containing a set of sentences.&amp;#10;&amp;#10;Left mouse click = ${left}&amp;#10;Right mouse click = ${right}&amp;#10;&amp;#10;Press spacebar to begin.`&amp;#10;;&amp;#10;left_response = left;&amp;#10;right_response = right;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="if expInfo[&quot;tf_mapping&quot;] == 'TrueFalse':&amp;#10;    left = 'True'&amp;#10;    right = 'False'&amp;#10;   &amp;#10;else:&amp;#10;    left = 'False'&amp;#10;    right ='True'&amp;#10;    &amp;#10;dynamic_text = f&quot;You are about to begin a Sentence Judgement Task.\n Please read the following Instructions carefully:\n\n Each sentence will be presented to you one word at a time. After the final word is displayed, a cross (+) will appear briefly.\nWhen you see the cross, decide whether the sentence could be literally true (e.g., “The funny sound was his snore”) or it's literally false (e.g., “The desert storm was a carrot”).\nRespond by using the mouse to select “True” or “False.” The cross will turn purple once your response has been registered.\nThis task is divided into 10 short sections (blocks), each containing a set of sentences.\n\n Use the mouse button to respond as follows:\nLeft mouse click = {left}\nRight mouse click = {right}\n\nPlease press the \&quot;spacebar\&quot; key to begin.&quot;&amp;#10;&amp;#10;left_response = left&amp;#10;right_response = right&amp;#10;" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="if ((expInfo[&quot;tf_mapping&quot;] === &quot;TrueFalse&quot;)) {&amp;#10;    left = &quot;True&quot;;&amp;#10;    right = &quot;False&quot;;&amp;#10;} else {&amp;#10;    left = &quot;False&quot;;&amp;#10;    right = &quot;True&quot;;&amp;#10;}&amp;#10;dynamic_text = `You are about to begin a Sentence Judgement Task.&amp;#10;Please read the following Instructions carefully:&amp;#10;&amp;#10;Each sentence will be presented to you one word at a time. After the final word is displayed, a cross (+) will appear briefly.&amp;#10;When you see the cross, decide whether the sentence could be literally true (e.g., “The funny sound was his snore”) or it's literally false (e.g., “The desert storm was a carrot”).&amp;#10;Respond by using the mouse to select “True” or “False.” The cross will turn purple once your response has been registered.&amp;#10;This task is divided into 10 short sections (blocks), each containing a set of sentences.&amp;#10;&amp;#10;Use the mouse button to respond as follows:&amp;#10;Left mouse click = ${left}&amp;#10;Right mouse click = ${right}&amp;#10;&amp;#10;Please press the &quot;spacebar&quot; key to begin.`&amp;#10;;&amp;#10;left_response = left;&amp;#10;right_response = right;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
@@ -139,7 +139,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.05" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="0.03" valType="num" updates="constant" name="letterHeight"/>
         <Param val="InstructionText" valType="code" updates="None" name="name"/>
         <Param val="" valType="num" updates="constant" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -194,23 +194,87 @@
         <Param val="" valType="code" updates="constant" name="stopVal"/>
         <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
       </RoutineSettingsComponent>
-      <CodeComponent name="code" plugin="None">
-        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
-        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="Each JS Frame"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+      <TextComponent name="responsefixationCross_2" plugin="None">
+        <Param val="black" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="code" valType="code" updates="None" name="name"/>
-      </CodeComponent>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.08" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="responsefixationCross_2" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="+" valType="str" updates="set every frame" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <TextComponent name="LeftResponseInstruction_4" plugin="None">
+        <Param val="black" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.035" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="LeftResponseInstruction_4" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(-0.4, -0.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="$left_response" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <TextComponent name="rightResponseInstruction_4" plugin="None">
+        <Param val="black" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.035" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rightResponseInstruction_4" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0.4, -0.3)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="$right_response" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
     </Routine>
     <Routine name="Fixation_Cross">
       <RoutineSettingsComponent name="Fixation_Cross" plugin="None">
@@ -468,7 +532,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="currentWordScript" valType="code" updates="None" name="name"/>
       </CodeComponent>
@@ -499,6 +563,43 @@
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
+      <MouseComponent name="earlyMouseClick" plugin="None">
+        <Param val="" valType="list" updates="constant" name="clickable"/>
+        <Param val="" valType="list" updates="constant" name="correctAns"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="never" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
+        <Param val="earlyMouseClick" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
+        <Param val="never" valType="str" updates="None" name="saveMouseState"/>
+        <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
+        <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
+        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="routine" valType="str" updates="constant" name="timeRelativeTo"/>
+      </MouseComponent>
+      <CodeComponent name="storeEarlyMouseClick" plugin="None">
+        <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="early_clicked = false;&amp;#10;early_response_time = [];&amp;#10;early_response = &quot;&quot;;&amp;#10;mouse_response = &quot;&quot;;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="early_clicked = False&amp;#10;early_response_time=[]&amp;#10;early_response= ''&amp;#10;mouse_response =''&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
+        <Param val="if t &lt; 3.0 and not early_clicked:&amp;#10;    buttons = earlyMouseClick.getPressed()&amp;#10;    if (buttons[0] or buttons[2]):&amp;#10;        early_clicked = True&amp;#10;        early_response_time= earlyMouseClick.mouseClock.getTime()&amp;#10;        if buttons[0]: &amp;#10;            early_response = left&amp;#10;            mouse_response = 'left'&amp;#10;            &amp;#10;        elif buttons[2]:  &amp;#10;            early_response = right&amp;#10;            mouse_response = 'right'&amp;#10;        &amp;#10;&amp;#10;&amp;#10;       " valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((t &lt; 3.0) &amp;&amp; (! early_clicked))) {&amp;#10;    buttons = earlyMouseClick.getPressed();&amp;#10;    if ((buttons[0] || buttons[2])) {&amp;#10;        early_clicked = true;&amp;#10;        early_response_time = earlyMouseClick.mouseClock.getTime();&amp;#10;        if (buttons[0]) {&amp;#10;            early_response = left;&amp;#10;            mouse_response = &quot;left&quot;;&amp;#10;        } else {&amp;#10;            if (buttons[2]) {&amp;#10;                early_response = right;&amp;#10;                mouse_response = &quot;right&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
+        <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
+        <Param val="correctStr = (correct_answer ? &quot;True&quot; : &quot;False&quot;);&amp;#10;corr_text = ((early_response.toString() === correctStr) ? &quot;yes&quot; : ((early_response !== null) ? &quot;no&quot; : null));&amp;#10;corr = ((early_response.toString() === correctStr) ? &quot;1&quot; : ((early_response !== null) ? &quot;0&quot; : null));&amp;#10;trialLoop.addData(&quot;early_rt&quot;, early_response_time);&amp;#10;trialLoop.addData(&quot;early_resp&quot;, early_response);&amp;#10;trialLoop.addData(&quot;early_mouse_key_resp&quot;, mouse_response);&amp;#10;trialLoop.addData(&quot;early_is_correct?&quot;, corr_text);&amp;#10;trialLoop.addData(&quot;early_accuracy&quot;, corr);&amp;#10;console.log(&quot;early_response_time&quot;, early_response_time);&amp;#10;console.log(&quot;early_resp&quot;, early_response);&amp;#10;console.log(&quot;early_is_correct?&quot;, corr_text);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="correctStr = &quot;True&quot; if correct_answer else &quot;False&quot;&amp;#10;corr_text = 'yes' if str(early_response) == correctStr else 'no' if early_response is not None else None&amp;#10;corr = '1' if str(early_response) == correctStr else '0' if early_response is not None else None&amp;#10;&amp;#10;# Record data to CSV&amp;#10;trialLoop.addData('early_rt', early_response_time)&amp;#10;trialLoop.addData('early_resp', early_response)&amp;#10;trialLoop.addData('early_mouse_key_resp', mouse_response)&amp;#10;trialLoop.addData('early_is_correct?', corr_text)&amp;#10;trialLoop.addData('early_accuracy', corr)&amp;#10;&amp;#10;print(&quot;early_response_time&quot;,early_response_time)&amp;#10;print(&quot;early_resp&quot;,early_response)&amp;#10;print('early_is_correct?', corr_text)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="storeEarlyMouseClick" valType="code" updates="None" name="name"/>
+      </CodeComponent>
       <TextComponent name="LeftResponseInstruction" plugin="None">
         <Param val="black" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -519,7 +620,7 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="3" valType="code" updates="constant" name="stopVal"/>
+        <Param val="6.0" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="$left_response" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
@@ -546,49 +647,76 @@
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="3" valType="code" updates="constant" name="stopVal"/>
+        <Param val="6.0" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
         <Param val="$right_response" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
       </TextComponent>
-      <MouseComponent name="earlyMouseClick" plugin="None">
+      <MouseComponent name="validResponseMouseClick" plugin="None">
         <Param val="" valType="list" updates="constant" name="clickable"/>
         <Param val="" valType="list" updates="constant" name="correctAns"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="never" valType="str" updates="constant" name="forceEndRoutineOnPress"/>
-        <Param val="earlyMouseClick" valType="code" updates="None" name="name"/>
+        <Param val="validResponseMouseClick" valType="code" updates="None" name="name"/>
         <Param val="True" valType="bool" updates="constant" name="newClicksOnly"/>
         <Param val="never" valType="str" updates="None" name="saveMouseState"/>
         <Param val="" valType="list" updates="constant" name="saveParamsClickable"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
-        <Param val="0.0" valType="code" updates="None" name="startVal"/>
+        <Param val="3.0" valType="code" updates="None" name="startVal"/>
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="3" valType="code" updates="constant" name="stopVal"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
         <Param val="False" valType="bool" updates="constant" name="storeCorrect"/>
-        <Param val="False" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="routine" valType="str" updates="constant" name="timeRelativeTo"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="mouse onset" valType="str" updates="constant" name="timeRelativeTo"/>
       </MouseComponent>
-      <CodeComponent name="storeEarlyMouseClick" plugin="None">
+      <TextComponent name="responsefixationCrossDisplay" plugin="None">
+        <Param val="black" valType="color" updates="constant" name="color"/>
+        <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
+        <Param val="1" valType="num" updates="constant" name="contrast"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="code" updates="constant" name="draggable"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="None" valType="str" updates="constant" name="flip"/>
+        <Param val="Arial" valType="str" updates="constant" name="font"/>
+        <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
+        <Param val="0.08" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="responsefixationCrossDisplay" valType="code" updates="None" name="name"/>
+        <Param val="" valType="num" updates="constant" name="opacity"/>
+        <Param val="0" valType="num" updates="constant" name="ori"/>
+        <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="None" name="startEstim"/>
+        <Param val="time (s)" valType="str" updates="None" name="startType"/>
+        <Param val="3.0" valType="code" updates="None" name="startVal"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
+        <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
+        <Param val="+" valType="str" updates="constant" name="text"/>
+        <Param val="from exp settings" valType="str" updates="None" name="units"/>
+        <Param val="" valType="code" updates="None" name="validator"/>
+        <Param val="" valType="num" updates="constant" name="wrapWidth"/>
+      </TextComponent>
+      <CodeComponent name="storeValidResponseMouseClick" plugin="None">
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
-        <Param val="clicked = false;&amp;#10;early_response_time = [];&amp;#10;early_response = &quot;&quot;;&amp;#10;mouse_response = &quot;&quot;;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
-        <Param val="clicked = False&amp;#10;early_response_time=[]&amp;#10;early_response= ''&amp;#10;mouse_response =''&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
+        <Param val="validClick = false;&amp;#10;valid_response_time = [];&amp;#10;valid_resp = &quot;&quot;;&amp;#10;responsefixationCrossDisplay.setColor(&quot;black&quot;);&amp;#10;valid_mouse_response = &quot;&quot;;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
+        <Param val="validClick = False&amp;#10;valid_response_time =[]&amp;#10;valid_resp = ''&amp;#10;responsefixationCrossDisplay.setColor('black')&amp;#10;valid_mouse_response =''&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="buttons = earlyMouseClick.getPressed()&amp;#10;if not clicked and (buttons[0] or buttons[2]):&amp;#10;    clicked = True&amp;#10;    early_response_time= earlyMouseClick.mouseClock.getTime()&amp;#10;    if buttons[0]: &amp;#10;        early_response = left&amp;#10;        mouse_response = 'left'&amp;#10;        &amp;#10;    elif buttons[2]:  &amp;#10;        early_response = right&amp;#10;        mouse_response = 'right'&amp;#10;        &amp;#10;&amp;#10;&amp;#10;       " valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="buttons = earlyMouseClick.getPressed();&amp;#10;if (((! clicked) &amp;&amp; (buttons[0] || buttons[2]))) {&amp;#10;    clicked = true;&amp;#10;    early_response_time = earlyMouseClick.mouseClock.getTime();&amp;#10;    if (buttons[0]) {&amp;#10;        early_response = left;&amp;#10;        mouse_response = &quot;left&quot;;&amp;#10;    } else {&amp;#10;        if (buttons[2]) {&amp;#10;            early_response = right;&amp;#10;            mouse_response = &quot;right&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="if t&gt;=3.0 and not validClick:&amp;#10;    validButtons= validResponseMouseClick.getPressed()&amp;#10;    if (validButtons[0] or validButtons[2]):&amp;#10;        validClick = True&amp;#10;        #validResponseMouseClick.mouseClock.reset()&amp;#10;        valid_response_time = validResponseMouseClick.mouseClock.getTime()&amp;#10;        if validButtons[0]: &amp;#10;            valid_resp = left&amp;#10;            valid_mouse_response = 'left'&amp;#10;        elif validButtons[2]:  &amp;#10;            valid_resp= right  &amp;#10;            valid_mouse_response = 'right'&amp;#10;        responsefixationCrossDisplay.setColor('purple')&amp;#10;&amp;#10;       " valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="if (((t &gt;= 3.0) &amp;&amp; (! validClick))) {&amp;#10;    validButtons = validResponseMouseClick.getPressed();&amp;#10;    if ((validButtons[0] || validButtons[2])) {&amp;#10;        validClick = true;&amp;#10;        valid_response_time = validResponseMouseClick.mouseClock.getTime();&amp;#10;        if (validButtons[0]) {&amp;#10;            valid_resp = left;&amp;#10;            valid_mouse_response = &quot;left&quot;;&amp;#10;        } else {&amp;#10;            if (validButtons[2]) {&amp;#10;                valid_resp = right;&amp;#10;                valid_mouse_response = &quot;right&quot;;&amp;#10;            }&amp;#10;        }&amp;#10;        responsefixationCrossDisplay.setColor(&quot;purple&quot;);&amp;#10;    }&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
-        <Param val="correctStr = (correct_answer ? &quot;True&quot; : &quot;False&quot;);&amp;#10;corr_text = ((early_response.toString() === correctStr) ? &quot;yes&quot; : ((early_response !== null) ? &quot;no&quot; : null));&amp;#10;corr = ((early_response.toString() === correctStr) ? &quot;1&quot; : ((early_response !== null) ? &quot;0&quot; : null));&amp;#10;trialLoop.addData(&quot;early_rt&quot;, early_response_time);&amp;#10;trialLoop.addData(&quot;early_resp&quot;, early_response);&amp;#10;trialLoop.addData(&quot;early_mouse_key_resp&quot;, mouse_response);&amp;#10;trialLoop.addData(&quot;early_is_correct?&quot;, corr_text);&amp;#10;trialLoop.addData(&quot;early_accuracy&quot;, corr);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
-        <Param val="correctStr = &quot;True&quot; if correct_answer else &quot;False&quot;&amp;#10;corr_text = 'yes' if str(early_response) == correctStr else 'no' if early_response is not None else None&amp;#10;corr = '1' if str(early_response) == correctStr else '0' if early_response is not None else None&amp;#10;&amp;#10;# Record data to CSV&amp;#10;trialLoop.addData('early_rt', early_response_time)&amp;#10;trialLoop.addData('early_resp', early_response)&amp;#10;trialLoop.addData('early_mouse_key_resp', mouse_response)&amp;#10;trialLoop.addData('early_is_correct?', corr_text)&amp;#10;trialLoop.addData('early_accuracy', corr)&amp;#10;" valType="extendedCode" updates="constant" name="End Routine"/>
+        <Param val="validStr = (correct_answer ? &quot;True&quot; : &quot;False&quot;);&amp;#10;valid_corr_text = ((valid_resp === validStr) ? &quot;yes&quot; : ((valid_resp !== null) ? &quot;no&quot; : null));&amp;#10;valid_corr = ((valid_resp === validStr) ? &quot;1&quot; : ((valid_resp !== null) ? &quot;0&quot; : null));&amp;#10;trialLoop.addData(&quot;valid_rt&quot;, valid_response_time);&amp;#10;trialLoop.addData(&quot;valid_resp&quot;, valid_resp);&amp;#10;trialLoop.addData(&quot;valid_mouse_key_resp&quot;, valid_mouse_response);&amp;#10;trialLoop.addData(&quot;valid_is_correct?&quot;, valid_corr_text);&amp;#10;trialLoop.addData(&quot;valid_accuracy&quot;, valid_corr);&amp;#10;console.log(&quot;valid_response_time&quot;, valid_response_time);&amp;#10;console.log(&quot;valid_resp&quot;, valid_resp);&amp;#10;console.log(&quot;valid_is_correct?&quot;, valid_corr_text);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
+        <Param val="&amp;#10;# Score correctness&amp;#10;validStr = &quot;True&quot; if correct_answer else &quot;False&quot;&amp;#10;valid_corr_text = 'yes' if valid_resp == validStr else 'no' if valid_resp is not None else None&amp;#10;valid_corr = '1' if valid_resp == validStr else '0' if valid_resp is not None else None&amp;#10;&amp;#10;# Record data to CSV&amp;#10;trialLoop.addData('valid_rt', valid_response_time)&amp;#10;trialLoop.addData('valid_resp', valid_resp)&amp;#10;trialLoop.addData('valid_mouse_key_resp', valid_mouse_response)&amp;#10;trialLoop.addData('valid_is_correct?', valid_corr_text)&amp;#10;trialLoop.addData('valid_accuracy', valid_corr)&amp;#10;print(&quot;valid_response_time&quot;,valid_response_time)&amp;#10;print(&quot;valid_resp&quot;,valid_resp)&amp;#10;print('valid_is_correct?', valid_corr_text)" valType="extendedCode" updates="constant" name="End Routine"/>
         <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="storeEarlyMouseClick" valType="code" updates="None" name="name"/>
+        <Param val="storeValidResponseMouseClick" valType="code" updates="None" name="name"/>
       </CodeComponent>
     </Routine>
     <Routine name="Word_Setup">
@@ -685,7 +813,7 @@
         <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
         <Param val="3.0" valType="code" updates="constant" name="stopVal"/>
         <Param val="True" valType="bool" updates="None" name="syncScreenRefresh"/>
-        <Param val="+" valType="str" updates="set every frame" name="text"/>
+        <Param val="+" valType="str" updates="constant" name="text"/>
         <Param val="from exp settings" valType="str" updates="None" name="units"/>
         <Param val="" valType="code" updates="None" name="validator"/>
         <Param val="" valType="num" updates="constant" name="wrapWidth"/>
@@ -698,8 +826,8 @@
         <Param val="clicked = false;&amp;#10;response_time = [];&amp;#10;resp = &quot;&quot;;&amp;#10;responsefixationCross.setColor(&quot;black&quot;);&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="clicked = False&amp;#10;response_time =[]&amp;#10;resp = ''&amp;#10;responsefixationCross.setColor('black')&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="Auto-&gt;JS" valType="str" updates="None" name="Code Type"/>
-        <Param val="buttons = validMouseClick.getPressed()&amp;#10;if not clicked and (buttons[0] or buttons[2]):&amp;#10;    clicked = True&amp;#10;    response_time = validMouseClick.mouseClock.getTime()&amp;#10;    if buttons[0]: &amp;#10;        resp = left&amp;#10;        mouse_response = 'left'&amp;#10;    elif buttons[2]:  &amp;#10;        resp= right  &amp;#10;        mouse_response = 'right'&amp;#10;    responsefixationCross.setColor('red')&amp;#10;&amp;#10;       " valType="extendedCode" updates="constant" name="Each Frame"/>
-        <Param val="buttons = validMouseClick.getPressed();&amp;#10;if (((! clicked) &amp;&amp; (buttons[0] || buttons[2]))) {&amp;#10;    clicked = true;&amp;#10;    response_time = validMouseClick.mouseClock.getTime();&amp;#10;    if (buttons[0]) {&amp;#10;        resp = left;&amp;#10;        mouse_response = &quot;left&quot;;&amp;#10;    } else {&amp;#10;        if (buttons[2]) {&amp;#10;            resp = right;&amp;#10;            mouse_response = &quot;right&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;    responsefixationCross.setColor(&quot;red&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
+        <Param val="buttons = validMouseClick.getPressed()&amp;#10;if not clicked and (buttons[0] or buttons[2]):&amp;#10;    clicked = True&amp;#10;    response_time = validMouseClick.mouseClock.getTime()&amp;#10;    if buttons[0]: &amp;#10;        resp = left&amp;#10;        mouse_response = 'left'&amp;#10;    elif buttons[2]:  &amp;#10;        resp= right  &amp;#10;        mouse_response = 'right'&amp;#10;    responsefixationCross.setColor('purple')&amp;#10;&amp;#10;       " valType="extendedCode" updates="constant" name="Each Frame"/>
+        <Param val="buttons = validMouseClick.getPressed();&amp;#10;if (((! clicked) &amp;&amp; (buttons[0] || buttons[2]))) {&amp;#10;    clicked = true;&amp;#10;    response_time = validMouseClick.mouseClock.getTime();&amp;#10;    if (buttons[0]) {&amp;#10;        resp = left;&amp;#10;        mouse_response = &quot;left&quot;;&amp;#10;    } else {&amp;#10;        if (buttons[2]) {&amp;#10;            resp = right;&amp;#10;            mouse_response = &quot;right&quot;;&amp;#10;        }&amp;#10;    }&amp;#10;    responsefixationCross.setColor(&quot;purple&quot;);&amp;#10;}&amp;#10;" valType="extendedCode" updates="constant" name="Each JS Frame"/>
         <Param val="" valType="extendedCode" updates="constant" name="End Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="End JS Experiment"/>
         <Param val="correctStr = (correct_answer ? &quot;True&quot; : &quot;False&quot;);&amp;#10;corr_text = ((resp === correctStr) ? &quot;yes&quot; : ((resp !== null) ? &quot;no&quot; : null));&amp;#10;corr = ((resp === correctStr) ? &quot;1&quot; : ((resp !== null) ? &quot;0&quot; : null));&amp;#10;trialLoop.addData(&quot;valid_rt&quot;, response_time);&amp;#10;trialLoop.addData(&quot;valid_resp&quot;, resp);&amp;#10;trialLoop.addData(&quot;valid_mouse_key_resp&quot;, mouse_response);&amp;#10;trialLoop.addData(&quot;valid_is_correct?&quot;, corr_text);&amp;#10;trialLoop.addData(&quot;valid_accuracy&quot;, corr);&amp;#10;" valType="extendedCode" updates="constant" name="End JS Routine"/>
@@ -835,6 +963,22 @@
       </TextComponent>
     </Routine>
     <Routine name="Start_Block_Instruction">
+      <RoutineSettingsComponent name="Start_Block_Instruction" plugin="None">
+        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
+        <Param val="" valType="str" updates="None" name="backgroundImg"/>
+        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
+        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
+        <Param val="" valType="str" updates="constant" name="desc"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
+        <Param val="" valType="code" updates="None" name="durationEstim"/>
+        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
+        <Param val="Start_Block_Instruction" valType="code" updates="None" name="name"/>
+        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
+        <Param val="" valType="code" updates="constant" name="skipIf"/>
+        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
+        <Param val="" valType="code" updates="constant" name="stopVal"/>
+        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
+      </RoutineSettingsComponent>
       <TextComponent name="blockInstruction" plugin="None">
         <Param val="black" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
@@ -879,22 +1023,6 @@
         <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="blockInstructionScript" valType="code" updates="None" name="name"/>
       </CodeComponent>
-      <RoutineSettingsComponent name="Start_Block_Instruction" plugin="None">
-        <Param val="none" valType="str" updates="None" name="backgroundFit"/>
-        <Param val="" valType="str" updates="None" name="backgroundImg"/>
-        <Param val="$[0,0,0]" valType="color" updates="None" name="color"/>
-        <Param val="rgb" valType="str" updates="None" name="colorSpace"/>
-        <Param val="" valType="str" updates="constant" name="desc"/>
-        <Param val="False" valType="bool" updates="None" name="disabled"/>
-        <Param val="" valType="code" updates="None" name="durationEstim"/>
-        <Param val="False" valType="code" updates="None" name="forceNonSlip"/>
-        <Param val="Start_Block_Instruction" valType="code" updates="None" name="name"/>
-        <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
-        <Param val="" valType="code" updates="constant" name="skipIf"/>
-        <Param val="duration (s)" valType="str" updates="None" name="stopType"/>
-        <Param val="" valType="code" updates="constant" name="stopVal"/>
-        <Param val="False" valType="bool" updates="None" name="useWindowParams"/>
-      </RoutineSettingsComponent>
     </Routine>
   </Routines>
   <Flow>
@@ -923,7 +1051,6 @@
     </LoopInitiator>
     <Routine name="Word_Setup"/>
     <Routine name="RSVP"/>
-    <Routine name="Particpant_Response"/>
     <LoopTerminator name="trialLoop"/>
     <Routine name="Fixation_Cross"/>
     <Routine name="Midpoint_Break"/>
