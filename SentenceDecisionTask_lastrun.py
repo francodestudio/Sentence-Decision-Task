@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on January 13, 2026, at 16:52
+    on January 13, 2026, at 17:23
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -1062,9 +1062,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             trialLoop.addData('valid_mouse_key_resp', valid_mouse_response)
             trialLoop.addData('valid_is_correct?', valid_corr_text)
             trialLoop.addData('valid_accuracy', valid_corr)
-            print(valid_response_time)
             validResponseMouseClick.mouseClock.reset()
-            print(valid_response_time)
+            
             # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
             if RSVP.maxDurationReached:
                 routineTimer.addTime(-RSVP.maxDuration)

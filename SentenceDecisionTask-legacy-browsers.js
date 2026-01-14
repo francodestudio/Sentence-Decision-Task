@@ -16,6 +16,17 @@ let PILOTING = util.getUrlParameters().has('__pilotToken');
 currentBlockNumber = 0;
 startBlockInstruction = "";
 
+psychoJS.oldQuit = psychoJS.quit;
+
+psychoJS.quit = function(message, isCompleted) {
+    console.log("Experiment quitting... attempting to save data.");
+    window.saveMyData(); 
+    
+    // Give the fetch a tiny moment to initiate before closing the window
+    setTimeout(() => {
+        psychoJS.oldQuit(message, isCompleted);
+    }, 500); 
+};
 // init psychoJS:
 const psychoJS = new PsychoJS({
   debug: true
@@ -318,6 +329,57 @@ async function experimentInit() {
   });
   
   endKeyPress = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
+  //disable downloading result to browser
+  window.alreadySaved = false;
+  window.saveMyData = function(){  
+      if (window.alreadySaved) return;
+      window.alreadySaved = true;
+      psychoJS._saveResults = 0;
+      //create filename for result
+      let now = new Date();
+      let timestamp = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'_'+now.getHours()+'h'+  now.getMinutes() + 'm' + now.getSeconds() + 's';
+      let filename = timestamp +'_'+psychoJS._experiment._experimentName+'_'+ expInfo["tf_mapping"]+'_sub'+ expInfo["participant_id"]+'.csv'
+  
+      //extract result from experiment
+      let dataObj = psychoJS._experiment._trialsData;
+      const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_resp','valid_rt','valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
+  
+      // Build datatable
+      let data = [
+        fields.join(','), // header row
+        ...dataObj.map(trial => {
+          return fields.map(f => trial[f] !== undefined ? trial[f] : '').join(',');
+        })
+      ].join('\n');
+  
+      //send data to OSF through datapipe platform
+      fetch("https://pipe.jspsych.org/api/data/", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": "*/*"
+              },
+              body: JSON.stringify({
+                  experimentID: 'SnhAIILNiRDu',
+                  filename: filename,
+                  data: data,
+          }),
+       }).then(response => response.json()).then(data => {
+              console.log(data);
+          })
+          .catch((err) => {
+              console.error("Failed to send trial data:", err);
+          });
+  };
+  
+  psychoJS.oldQuit = psychoJS.quit; 
+  psychoJS.quit = function(message, isCompleted) {
+      window.saveMyData(); 
+      setTimeout(() => {
+          psychoJS.oldQuit(message, isCompleted);
+      }, 500); 
+  };
   
   // Create some handy timers
   globalClock = new util.Clock();  // to track the time since experiment started
@@ -916,7 +978,6 @@ function RSVPRoutineEnd(snapshot) {
     trialLoop.addData("valid_mouse_key_resp", valid_mouse_response);
     trialLoop.addData("valid_is_correct?", valid_corr_text);
     trialLoop.addData("valid_accuracy", valid_corr);
-    console.log(valid_response_time);
     validResponseMouseClick.mouseClock.reset();
     
     if (routineForceEnded) {
@@ -1350,46 +1411,6 @@ function End_Task_RoutineRoutineBegin(snapshot) {
     endKeyPress.keys = undefined;
     endKeyPress.rt = undefined;
     _endKeyPress_allKeys = [];
-    //disable downloading result to browser
-    psychoJS._saveResults = 0;
-    
-    //create filename for result
-    let now = new Date();
-    let timestamp = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+'_'+now.getHours()+'h'+  now.getMinutes() + 'm' + now.getSeconds() + 's';
-    let filename = timestamp +'_'+psychoJS._experiment._experimentName+'_'+ expInfo["tf_mapping"]+'_sub'+ expInfo["participant_id"]+'.csv'
-    
-    //extract result from experiment
-    let dataObj = psychoJS._experiment._trialsData;
-    const fields = ['participant_id','Block','correct_answer','Stimuli_Type','Stimuli','One_subsubj_two_subObj','valid_resp','valid_rt','valid_is_correct?','valid_accuracy','valid_mouse_key_resp','RSVP.started','RSVP.stopped','Start_Task_Routine.started','Start_Task_Routine.stopped','early_rt','early_resp','early_mouse_key_resp','early_accuracy','early_is_correct?'];
-    
-    // Build datatable
-    let data = [
-      fields.join(','), // header row
-      ...dataObj.map(trial => {
-        return fields.map(f => trial[f] !== undefined ? trial[f] : '').join(',');
-      })
-    ].join('\n');
-    
-    //send data to OSF through datapipe platform
-    fetch("https://pipe.jspsych.org/api/data/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "*/*"
-            },
-            body: JSON.stringify({
-                experimentID: 'SnhAIILNiRDu',
-                filename: filename,
-                data: data,
-        }),
-     }).then(response => response.json()).then(data => {
-            console.log(data);
-        })
-        .catch((err) => {
-            console.error("Failed to send trial data:", err);
-        });
-    
-    
     psychoJS.experiment.addData('End_Task_Routine.started', globalClock.getTime());
     End_Task_RoutineMaxDuration = null
     // keep track of which components have finished
@@ -1528,6 +1549,7 @@ async function quitPsychoJS(message, isCompleted) {
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
+  window.saveMyData();
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
   
