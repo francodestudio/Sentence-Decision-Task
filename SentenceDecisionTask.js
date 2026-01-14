@@ -24,17 +24,6 @@ let PILOTING = util.getUrlParameters().has('__pilotToken');
 currentBlockNumber = 0;
 startBlockInstruction = "";
 
-psychoJS.oldQuit = psychoJS.quit;
-
-psychoJS.quit = function(message, isCompleted) {
-    console.log("Experiment quitting... attempting to save data.");
-    window.saveMyData(); 
-    
-    // Give the fetch a tiny moment to initiate before closing the window
-    setTimeout(() => {
-        psychoJS.oldQuit(message, isCompleted);
-    }, 500); 
-};
 // init psychoJS:
 const psychoJS = new PsychoJS({
   debug: true
